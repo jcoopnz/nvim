@@ -134,8 +134,8 @@ require("lazy").setup({
             footer = { "%s", align = "center" },
           },
           sections = {
-            { section = "terminal", cmd = "fortune -s | cowsay", hl = "header", padding = 1, indent = 10 },
-            { section = "keys", padding = 1.5, gap = 1 },
+            { section = "terminal", cmd = "fortune -s | cowsay", hl = "header", indent = 10 },
+            { section = "keys", padding = 1.5 },
             { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1.5 },
             { section = "startup" },
           },
