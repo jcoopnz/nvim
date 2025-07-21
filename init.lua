@@ -56,11 +56,6 @@ option.shiftwidth = 2
 option.expandtab = true
 option.scrolloff = 8
 
--- scheduled to improve load
-vim.schedule(function()
-  option.clipboard = "unnamedplus"
-end)
-
 map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight" })
 map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus left" })
 map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus right" })
@@ -80,6 +75,11 @@ map.set("n", "L", ":bnext<CR>", { desc = "Next buffer" })
 map.set("n", "H", ":bprevious<CR>", { desc = "Previous buffer" })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
+
+-- scheduled to improve load
+vim.schedule(function()
+  option.clipboard = "unnamedplus"
+end)
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked text",
@@ -103,10 +103,11 @@ require("lazy").setup({
   spec = {
     -- important / LSP / behavioural
     {
-      "folke/tokyonight.nvim",
+      "catppuccin/nvim",
       lazy = false, priority = 1001,
+      name = "catppuccin",
       opts = function()
-        vim.cmd([[colorscheme tokyonight-night]])
+        vim.cmd([[colorscheme catppuccin-mocha]])
       end,
     },
 
