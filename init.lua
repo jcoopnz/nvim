@@ -67,12 +67,11 @@ map.set("n", "J", "mzJ`z", { desc = "Append line below" })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste" })
 map.set("n", "<LEADER>d", "\"_d", { desc = "Special delete" })
 map.set("v", "<LEADER>d", "\"_d", { desc = "Special delete" })
+map.set("n", "<LEADER>l", ":Lazy<CR>", { desc = "Lazy" })
 map.set("n", "<LEADER>S", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<LEFT><LEFT><LEFT>", { desc = "Substitute cursor word" })
 map.set("n", "<LEADER>z", ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>", { desc = "Yank relative file name" })
 map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split" })
 map.set("n", "D", ":lua vim.diagnostic.open_float(nil, {border='rounded',source=true})<CR>", { desc = "Show diagnostic" })
-map.set("n", "L", ":bnext<CR>", { desc = "Next buffer" })
-map.set("n", "H", ":bprevious<CR>", { desc = "Previous buffer" })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 
@@ -392,8 +391,12 @@ require("lazy").setup({
       opts = {
         options = {
           color_icons = true,
-          sort_by = "insert_after_current",
+          sort_by = "relative_directory",
         },
+      },
+      keys = {
+        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
+        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
       },
     },
 
