@@ -305,6 +305,13 @@ require("lazy").setup({
     },
 
     {
+      "folke/todo-comments.nvim",
+      event = "BufReadPre",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {},
+    },
+
+    {
       "MagicDuck/grug-far.nvim",
       cmd = "GrugFar",
       opts = { headerMaxWidth = 80 },
