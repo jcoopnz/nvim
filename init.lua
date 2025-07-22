@@ -397,6 +397,8 @@ require("lazy").setup({
       keys = {
         { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
         { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
       },
     },
 
