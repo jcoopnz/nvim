@@ -398,6 +398,7 @@ require("lazy").setup({
         options = {
           color_icons = true,
           sort_by = "relative_directory",
+          truncate_names = false,
         },
       },
       keys = {
