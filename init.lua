@@ -279,12 +279,12 @@ require("lazy").setup({
         {
           "<LEADER>x",
           "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
-          desc = "Diagnostics for buffer",
+          desc = "Diagnostics list",
         },
         {
           "<LEADER>X",
           "<CMD>Trouble todo toggle filter.buf=0<CR>",
-          desc = "Todo for buffer",
+          desc = "Todos list",
         },
       },
     },
