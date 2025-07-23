@@ -470,23 +470,35 @@ require("lazy").setup({
     {
       "nvim-lualine/lualine.nvim",
       event = "BufReadPre",
-      opts = {
-        options = {
-          icons_enabled = true,
-          theme = "auto",
-          globalstatus = true,
-          disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
-          component_separators = { left = "", right = ""},
-          section_separators = { left = "", right = ""},
-        },
-        sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "diff", "diagnostics" },
-          lualine_c = { "", { "filename", path = 1, shorting_target = 60 } },
-          lualine_x = { "searchcount", "selectioncount", "lsp_status" },
-          lualine_z = { "location" },
-        },
-      },
+      opts = function()
+        local noice = require("noice")
+        return {
+          options = {
+            icons_enabled = true,
+            theme = "auto",
+            globalstatus = true,
+            disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
+            component_separators = { left = "", right = ""},
+            section_separators = { left = "", right = ""},
+          },
+          sections = {
+            lualine_a = { "mode" },
+            lualine_b = { "diff", "diagnostics" },
+            lualine_c = { "", { "filename", path = 1, shorting_target = 60 } },
+            lualine_x = {
+              {
+                noice.api.status.command.get,
+                cond = noice.api.status.command.has,
+                color = { fg = "#ff9e64" },
+              },
+              "searchcount",
+              "selectioncount",
+              "lsp_status"
+            },
+            lualine_z = { "location" },
+          },
+        }
+      end,
     },
 
     {
