@@ -322,6 +322,11 @@ require("lazy").setup({
     },
 
     {
+      "tpope/vim-repeat",
+      event = "VeryLazy",
+    },
+
+    {
       "tpope/vim-surround",
       event = "BufReadPost",
     },
