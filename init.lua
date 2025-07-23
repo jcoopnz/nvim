@@ -381,6 +381,12 @@ require("lazy").setup({
 
     -- visual / slightly behavioural
     {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = "BufReadPost",
+      opts = {},
+    },
+
+    {
       "folke/which-key.nvim",
       event = "VeryLazy",
       opts = {
