@@ -67,7 +67,8 @@ map.set("n", "J", "mzJ`z", { desc = "Append line below" })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste" })
 map.set("n", "<LEADER>d", "\"_d", { desc = "Special delete" })
 map.set("v", "<LEADER>d", "\"_d", { desc = "Special delete" })
-map.set("n", "<LEADER>l", ":Lazy<CR>", { desc = "Lazy" })
+map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy" })
+map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason" })
 map.set("n", "<LEADER>S", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<LEFT><LEFT><LEFT>", { desc = "Substitute cursor word" })
 map.set("n", "<LEADER>z", ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>", { desc = "Yank relative file name" })
 map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split" })
@@ -177,7 +178,7 @@ require("lazy").setup({
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
         { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "Goto references" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP symbols" },
-        { "<LEADER>ul", function() Snacks.picker.lsp_config() end, desc = "LSP config" },
+        { "<LEADER>uL", function() Snacks.picker.lsp_config() end, desc = "LSP config" },
 
         -- Buffers
         { "<LEADER>bd", function() Snacks.bufdelete() end, desc = "Delete" },
