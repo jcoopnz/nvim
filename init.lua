@@ -285,6 +285,7 @@ require("lazy").setup({
     },
 
     {
+      -- NOTE: moving to the new "main" branch is buggy in angular component files
       "nvim-treesitter/nvim-treesitter", branch = "master",
       lazy = vim.fn.argc(-1) == 0, -- load early when opening file from cli
       event = "BufReadPre",
