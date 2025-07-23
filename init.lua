@@ -101,7 +101,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 require("lazy").setup({
   spec = {
-    -- important / LSP / behavioural
     {
       "catppuccin/nvim",
       lazy = false, priority = 1001,
@@ -218,78 +217,6 @@ require("lazy").setup({
     },
 
     {
-      "mason-org/mason-lspconfig.nvim",
-      event = "VeryLazy",
-      dependencies = {
-        {
-          "mason-org/mason.nvim",
-          lazy = true,
-          opts = {},
-        },
-        {
-          "neovim/nvim-lspconfig",
-          lazy = true,
-          config = function()
-            vim.api.nvim_create_autocmd("LspAttach", {
-              callback = function(event)
-                map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-              end
-            })
-          end,
-        },
-      },
-      opts = {
-        ensure_installed = {
-          "ast_grep",
-          "lua_ls",
-          "ts_ls"
-        },
-      },
-    },
-
-    {
-      "saghen/blink.cmp", version = "1.*",
-      event = "BufReadPre",
-      dependencies = {
-        { "rafamadriz/friendly-snippets", lazy = true },
-      },
-      opts = {
-        keymap = { preset = "default" },
-        completion = {
-          documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 500,
-          },
-        },
-        sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
-        },
-        fuzzy = { implementation = "prefer_rust" },
-      },
-    },
-
-    {
-      "folke/trouble.nvim",
-      cmd = "Trouble",
-      opts = {
-        focus = true,
-        auto_close = true,
-      },
-      keys = {
-        {
-          "<LEADER>x",
-          "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
-          desc = "Diagnostics list",
-        },
-        {
-          "<LEADER>X",
-          "<CMD>Trouble todo toggle filter.buf=0<CR>",
-          desc = "Todos list",
-        },
-      },
-    },
-
-    {
       -- NOTE: moving to the new "main" branch is buggy in angular component files
       "nvim-treesitter/nvim-treesitter", branch = "master",
       lazy = vim.fn.argc(-1) == 0, -- load early when opening file from cli
@@ -327,80 +254,37 @@ require("lazy").setup({
     },
 
     {
-      "tpope/vim-repeat",
+      "folke/noice.nvim",
       event = "VeryLazy",
-    },
-
-    {
-      "tpope/vim-surround",
-      event = "BufReadPost",
-    },
-
-    {
-      "echasnovski/mini.pairs",
-      event = "BufReadPost",
-      opts = {
-        modes = { insert = true, command = true, terminal = false },
-        skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-        skip_ts = { "string" },
-        skip_unbalanced = true,
-        markdown = true,
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
       },
-    },
-
-    {
-      "folke/todo-comments.nvim",
-      event = "BufReadPre",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      opts = {},
-    },
-
-    {
-      "MagicDuck/grug-far.nvim",
-      cmd = "GrugFar",
-      opts = { headerMaxWidth = 80 },
-      keys = {
-        {
-          "<LEADER>sR",
-          function()
-            local grug = require("grug-far")
-            local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-            grug.open({
-              transient = true,
-              prefills = {
-                filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-              },
-            })
-          end,
-          mode = { "n", "v" },
-          desc = "Search and replace",
+      opts = {
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        messages = {
+          view_search = false,
+        },
+        presets = {
+          bottom_search = true,
+          command_palette = true,
+          long_message_to_split = true,
+          inc_rename = false,
+          lsp_doc_border = true,
+        },
+        routes = {
+          {
+            view = "notify",
+            filter = { event = "msg_showmode" },
+          },
         },
       },
-    },
-
-    {
-      "folke/persistence.nvim",
-      event = "BufReadPre",
-      opts = {},
-    },
-
-    {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
-      opts = {
-        library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-      },
-    },
-
-    -- visual / slightly behavioural
-    {
-      "nvim-treesitter/nvim-treesitter-context",
-      event = "BufReadPost",
-      opts = {},
     },
 
     {
@@ -422,6 +306,77 @@ require("lazy").setup({
           },
         },
       },
+    },
+
+    {
+      "mason-org/mason-lspconfig.nvim",
+      event = "VeryLazy",
+      dependencies = {
+        {
+          "mason-org/mason.nvim",
+          lazy = true,
+          opts = {},
+        },
+        {
+          "neovim/nvim-lspconfig",
+          lazy = true,
+          config = function()
+            vim.api.nvim_create_autocmd("LspAttach", {
+              callback = function(event)
+                map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+              end
+            })
+          end,
+        },
+      },
+      opts = {
+        ensure_installed = {
+          "ast_grep",
+          "lua_ls",
+          "ts_ls"
+        },
+      },
+    },
+
+    {
+      "nvim-tree/nvim-web-devicons",
+      event = "VeryLazy",
+    },
+
+    {
+      "tpope/vim-repeat",
+      event = "VeryLazy",
+    },
+
+    {
+      "akinsho/bufferline.nvim", version = "*",
+      event = "BufReadPre",
+      opts = {
+        options = {
+          color_icons = true,
+          sort_by = "relative_directory",
+          truncate_names = false,
+        },
+      },
+      keys = {
+        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
+        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
+      },
+    },
+
+    {
+      "folke/todo-comments.nvim",
+      event = "BufReadPre",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {},
+    },
+
+    {
+      "folke/persistence.nvim",
+      event = "BufReadPre",
+      opts = {},
     },
 
     {
@@ -451,24 +406,6 @@ require("lazy").setup({
           topdelete = { text = "" },
           changedelete = { text = "▎" },
         },
-      },
-    },
-
-    {
-      "akinsho/bufferline.nvim", version = "*",
-      event = "BufReadPre",
-      opts = {
-        options = {
-          color_icons = true,
-          sort_by = "relative_directory",
-          truncate_names = false,
-        },
-      },
-      keys = {
-        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
-        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
-        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
-        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
       },
     },
 
@@ -507,45 +444,103 @@ require("lazy").setup({
     },
 
     {
-      "folke/noice.nvim",
-      event = "VeryLazy",
+      "saghen/blink.cmp", version = "1.*",
+      event = "BufReadPre",
       dependencies = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
+        { "rafamadriz/friendly-snippets", lazy = true },
       },
       opts = {
-        lsp = {
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
+        keymap = { preset = "default" },
+        completion = {
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 500,
           },
         },
-        messages = {
-          view_search = false,
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer" },
         },
-        presets = {
-          bottom_search = true,
-          command_palette = true,
-          long_message_to_split = true,
-          inc_rename = false,
-          lsp_doc_border = true,
-        },
-        routes = {
-          {
-            view = "notify",
-            filter = { event = "msg_showmode" },
-          },
+        fuzzy = { implementation = "prefer_rust" },
+      },
+    },
+
+    {
+      "echasnovski/mini.pairs",
+      event = "BufReadPost",
+      opts = {
+        modes = { insert = true, command = true, terminal = false },
+        skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+        skip_ts = { "string" },
+        skip_unbalanced = true,
+        markdown = true,
+      },
+    },
+
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = "BufReadPost",
+      opts = {},
+    },
+
+    {
+      "tpope/vim-surround",
+      event = "BufReadPost",
+    },
+
+    {
+      "MagicDuck/grug-far.nvim",
+      cmd = "GrugFar",
+      opts = { headerMaxWidth = 80 },
+      keys = {
+        {
+          "<LEADER>sR",
+          function()
+            local grug = require("grug-far")
+            local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+            grug.open({
+              transient = true,
+              prefills = {
+                filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+              },
+            })
+          end,
+          mode = { "n", "v" },
+          desc = "Search and replace",
         },
       },
     },
 
     {
-      "nvim-tree/nvim-web-devicons",
-      event = "VeryLazy",
+      "folke/trouble.nvim",
+      cmd = "Trouble",
+      opts = {
+        focus = true,
+        auto_close = true,
+      },
+      keys = {
+        {
+          "<LEADER>x",
+          "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
+          desc = "Diagnostics list",
+        },
+        {
+          "<LEADER>X",
+          "<CMD>Trouble todo toggle filter.buf=0<CR>",
+          desc = "Todos list",
+        },
+      },
+    },
+
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
     },
   },
 
-  -- auto check for plugin updates
   checker = { enabled = true },
 })
