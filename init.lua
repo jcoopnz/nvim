@@ -322,6 +322,11 @@ require("lazy").setup({
     },
 
     {
+      "tpope/vim-surround",
+      event = "BufReadPost",
+    },
+
+    {
       "echasnovski/mini.pairs",
       event = "BufReadPost",
       opts = {
