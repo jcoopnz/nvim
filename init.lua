@@ -239,7 +239,11 @@ require("lazy").setup({
         },
       },
       opts = {
-        ensure_installed = { "ast_grep", "lua_ls", "ts_ls" },
+        ensure_installed = {
+          "ast_grep",
+          "lua_ls",
+          "ts_ls"
+        },
       },
     },
 
@@ -290,7 +294,28 @@ require("lazy").setup({
         highlight = { enable = true },
         indent = { enable = true },
         auto_install = true,
-        ensure_installed = { "angular", "bash", "css", "csv", "dockerfile", "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore", "go", "html", "http", "javascript", "jsdoc", "json", "latex", "lua", "markdown", "markdown_inline", "nginx", "pug", "readline", "regex", "ruby", "scss", "sql", "svelte", "toml", "tsx", "typescript", "vim", "xml", "yaml" },
+        ensure_installed = {
+          "angular",
+          "bash",
+          "css",
+          "git_config",
+          "gitignore",
+          "go",
+          "html",
+          "http",
+          "javascript",
+          "json",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "pug",
+          "regex",
+          "scss",
+          "svelte",
+          "typescript",
+          "vim",
+          "yaml"
+        },
       },
     },
 
