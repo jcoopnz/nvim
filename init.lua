@@ -153,7 +153,7 @@ require("lazy").setup({
         words = { enabled = true },
       },
       keys = {
-        ---@module "snacks"
+        -- @module "snacks"
 
         -- Find Files
         { "<LEADER><LEADER>", function() Snacks.picker.smart() end, desc = "Smart find files" },
@@ -322,7 +322,7 @@ require("lazy").setup({
           lazy = true,
           config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
-              callback = function(event)
+              callback = function()
                 map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
               end
             })
