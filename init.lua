@@ -217,40 +217,9 @@ require("lazy").setup({
     },
 
     {
-      -- NOTE: moving to the new "main" branch is buggy in angular component files
-      "nvim-treesitter/nvim-treesitter", branch = "master",
-      lazy = vim.fn.argc(-1) == 0, -- load early when opening file from cli
-      event = "BufReadPre",
-      cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+      "nvim-treesitter/nvim-treesitter", branch = "main",
+      lazy = false,
       build = ":TSUpdate",
-      opts = {
-        highlight = { enable = true },
-        indent = { enable = true },
-        auto_install = true,
-        -- FIX: ensure_installed doesn't seem to ensure they're installed
-        -- ensure_installed = {
-        --   "angular",
-        --   "bash",
-        --   "css",
-        --   "git_config",
-        --   "gitignore",
-        --   "go",
-        --   "html",
-        --   "http",
-        --   "javascript",
-        --   "json",
-        --   "lua",
-        --   "markdown",
-        --   "markdown_inline",
-        --   "pug",
-        --   "regex",
-        --   "scss",
-        --   "svelte",
-        --   "typescript",
-        --   "vim",
-        --   "yaml"
-        -- },
-      },
     },
 
     {
