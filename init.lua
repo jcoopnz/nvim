@@ -81,11 +81,13 @@ vim.schedule(function()
   option.clipboard = "unnamedplus"
 end)
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight yanked text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
   callback = function()
-    vim.hl.on_yank()
+    vim.treesitter.start()
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo.foldmethod = 'indent'
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end,
 })
 
@@ -96,6 +98,14 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.fn.matchadd("TelescopeParent", "\t\t.*$")
       vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
     end)
+  end,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight yanked text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
   end,
 })
 
@@ -220,6 +230,31 @@ require("lazy").setup({
       "nvim-treesitter/nvim-treesitter", branch = "main",
       lazy = false,
       build = ":TSUpdate",
+      config = function()
+        local treesitter = require("nvim-treesitter")
+        treesitter.install(
+          "angular",
+          "bash",
+          "css",
+          "git_config",
+          "gitignore",
+          "go",
+          "html",
+          "http",
+          "javascript",
+          "json",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "pug",
+          "regex",
+          "scss",
+          "svelte",
+          "typescript",
+          "vim",
+          "yaml"
+        )
+      end,
     },
 
     {
