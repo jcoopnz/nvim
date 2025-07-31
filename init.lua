@@ -29,19 +29,16 @@ option.undofile = true
 option.ignorecase = true
 option.smartcase = true
 option.splitright = true
-option.splitbelow = false
 option.inccommand = "nosplit"
 option.confirm = true
 option.smartindent = true
 option.updatetime = 50
 option.timeoutlen = 500
-option.hidden = true
 
 -- visual
 option.wrap = true
 option.breakindent = true
 option.showmode = false
-option.laststatus = 0
 option.cursorline = true
 option.list = true
 option.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
@@ -56,23 +53,22 @@ option.shiftwidth = 2
 option.expandtab = true
 option.scrolloff = 8
 
-map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight" })
-map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus left" })
-map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus right" })
-map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus down" })
-map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus up" })
-map.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-map.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
-map.set("n", "J", "mzJ`z", { desc = "Append line below" })
-map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste" })
-map.set("n", "<LEADER>d", "\"_d", { desc = "Special delete" })
-map.set("v", "<LEADER>d", "\"_d", { desc = "Special delete" })
-map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy" })
-map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason" })
+map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight", silent = true })
+map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus left", silent = true })
+map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus right", silent = true })
+map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus down", silent = true })
+map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus up", silent = true })
+map.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
+map.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
+map.set("n", "J", "mzJ`z", { desc = "Append line below", silent = true })
+map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste", silent = true })
+map.set({"n", "v"}, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
+map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true  })
+map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true  })
 map.set("n", "<LEADER>S", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<LEFT><LEFT><LEFT>", { desc = "Substitute cursor word" })
-map.set("n", "<LEADER>z", ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>", { desc = "Yank relative file name" })
-map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split" })
-map.set("n", "D", ":lua vim.diagnostic.open_float(nil, {border='rounded',source=true})<CR>", { desc = "Show diagnostic" })
+map.set("n", "<LEADER>z", ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>", { desc = "Yank relative file name", silent = true })
+map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
+map.set("n", "D", ":lua vim.diagnostic.open_float(nil, {border='rounded',source=true})<CR>", { desc = "Show diagnostic", silent = true })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 
@@ -139,15 +135,18 @@ require("lazy").setup({
             { section = "startup" },
           },
         },
+        picker = {
+          enabled = true,
+          layout = { cycle = false },
+        },
         bufdelete = { enabled = true },
         explorer = { enabled = true },
         indent = { enabled = true },
-        image = { enabled = true },
         input = { enabled = true },
+        image = { enabled = true },
         lazygit = { enable = true },
         notifier = { enable = true },
         notify = { enable = true },
-        picker = { enabled = true },
         scope = { enabled = true },
         scroll = { enable = true },
         words = { enabled = true },
