@@ -58,8 +58,6 @@ map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus left", silent = true })
 map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus right", silent = true })
 map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus down", silent = true })
 map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus up", silent = true })
-map.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true })
-map.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up", silent = true })
 map.set("n", "J", "mzJ`z", { desc = "Append line below", silent = true })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste", silent = true })
 map.set({"n", "v"}, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
@@ -147,7 +145,6 @@ require("lazy").setup({
         lazygit = { enable = true },
         notifier = { enable = true },
         notify = { enable = true },
-        scope = { enabled = true },
         scroll = { enable = true },
         words = { enabled = true },
       },
@@ -332,6 +329,39 @@ require("lazy").setup({
     },
 
     {
+      'echasnovski/mini.nvim', version = false,
+      event = "VeryLazy",
+      config = function()
+        --  Better arround & inside
+        --  - va)  - [V]isually select [A]round [)]paren
+        --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
+        --  - ci'  - [C]hange [I]nside [']quote
+        require("mini.ai").setup({
+          n_lines = 500,
+          silect = false,
+        })
+
+        require("mini.move").setup({
+          mappings = {
+            -- Move visual selection in Visual mode
+            left = "H",
+            right = "L",
+            down = "J",
+            up = "K",
+
+            -- Move current line in Normal mode
+            -- "" disables mapping
+            line_left = "{",
+            line_right = "}",
+            line_down = "", line_up = "",
+          }
+        })
+
+        require("mini.pairs").setup()
+      end,
+    },
+
+    {
       "nvim-tree/nvim-web-devicons",
       event = "VeryLazy",
     },
@@ -457,18 +487,6 @@ require("lazy").setup({
           default = { "lsp", "path", "snippets", "buffer" },
         },
         fuzzy = { implementation = "prefer_rust" },
-      },
-    },
-
-    {
-      "echasnovski/mini.pairs",
-      event = "BufReadPost",
-      opts = {
-        modes = { insert = true, command = true, terminal = false },
-        skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-        skip_ts = { "string" },
-        skip_unbalanced = true,
-        markdown = true,
       },
     },
 
