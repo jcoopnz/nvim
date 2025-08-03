@@ -38,6 +38,7 @@ option.timeoutlen = 500
 -- visual
 option.wrap = true
 option.breakindent = true
+option.signcolumn = 'yes'
 option.showmode = false
 option.cursorline = true
 option.list = true
