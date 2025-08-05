@@ -70,6 +70,7 @@ map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
 map.set("n", "D", ":lua vim.diagnostic.open_float(nil, {border='rounded',source=true})<CR>", { desc = "Show diagnostic", silent = true })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
+map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
 
 -- scheduled to improve load
 vim.schedule(function()
