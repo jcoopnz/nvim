@@ -169,11 +169,20 @@ require("lazy").setup({
         { "<LEADER><LEADER>", function() Snacks.picker.smart() end, desc = "Smart find files" },
         { "<LEADER>ff", function() Snacks.picker.git_files() end, desc = "Git files" },
         { "<LEADER>.", function() Snacks.picker.recent() end, desc = "Find recent files" },
-        { "<LEADER>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Config file" },
+        {
+          "<LEADER>fc",
+          function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
+          desc = "Config file"
+        },
 
         -- Search Grep
         { "<LEADER>/",  function() Snacks.picker.grep() end, desc = "Search grep" },
-        { "<LEADER>*", function() Snacks.picker.grep_word() end, desc = "Grep cursor word/selection", mode = { "n", "x" } },
+        {
+          "<LEADER>*",
+          function() Snacks.picker.grep_word() end,
+          desc = "Grep cursor word/selection",
+          mode = { "n", "x" }
+        },
 
         -- Find/Search Other
         { "<LEADER>sr", function() Snacks.picker.resume() end, desc = "Resume" },
@@ -282,12 +291,10 @@ require("lazy").setup({
           inc_rename = false,
           lsp_doc_border = true,
         },
-        routes = {
-          {
-            view = "notify",
-            filter = { event = "msg_showmode" },
-          },
-        },
+        routes = {{
+          view = "notify",
+          filter = { event = "msg_showmode" },
+        }},
       },
     },
 
@@ -375,15 +382,9 @@ require("lazy").setup({
       end,
     },
 
-    {
-      "nvim-tree/nvim-web-devicons",
-      event = "VeryLazy",
-    },
+    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
-    {
-      "tpope/vim-repeat",
-      event = "VeryLazy",
-    },
+    { "tpope/vim-repeat", event = "VeryLazy" },
 
     {
       "akinsho/bufferline.nvim", version = "*",
