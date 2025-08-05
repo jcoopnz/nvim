@@ -71,6 +71,7 @@ map.set("n", "D", ":lua vim.diagnostic.open_float(nil, {border='rounded',source=
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
+map.set("v", "<LEADER>=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
 
 -- scheduled to improve load
 vim.schedule(function()
