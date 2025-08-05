@@ -334,7 +334,7 @@ require("lazy").setup({
           config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
               callback = function()
-                map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+                map.set("n", "<LEADER>rs", vim.lsp.buf.rename, { desc = "Rename symbol" })
               end
             })
           end,
