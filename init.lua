@@ -54,26 +54,21 @@ option.shiftwidth = 2
 option.expandtab = true
 option.scrolloff = 8
 
-map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight", silent = true })
 map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus left", silent = true })
 map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus right", silent = true })
 map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus down", silent = true })
 map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus up", silent = true })
+map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
+map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight", silent = true })
+map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true  })
+map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true  })
+map.set("n", "q", "<Nop>", { noremap = true, silent = true })
+map.set("n", "Q", "q", { noremap = true, silent = true })
+map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
 map.set("n", "J", "mzJ`z", { desc = "Append line below", silent = true })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste", silent = true })
 map.set({"n", "v"}, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
-map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true  })
-map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true  })
-map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
-map.set("n", "q", "<Nop>", { noremap = true, silent = true })
-map.set("n", "Q", "q", { noremap = true, silent = true })
-map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
 map.set("v", "<LEADER>=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
-map.set(
-  "n", "<LEADER>S",
-  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<LEFT><LEFT><LEFT>",
-  { desc = "Substitute cursor word" }
-)
 map.set(
   "n", "<LEADER>z",
   ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>",
@@ -83,6 +78,11 @@ map.set(
   "n", "D",
   ":lua vim.diagnostic.open_float(nil, {border='rounded',source=true})<CR>",
   { desc = "Show diagnostic", silent = true }
+)
+map.set(
+  "n", "<LEADER>S",
+  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<LEFT><LEFT><LEFT>",
+  { desc = "Substitute cursor word" }
 )
 
 -- scheduled to improve load
