@@ -186,7 +186,6 @@ require("lazy").setup({
         -- Find/Search Other
         { "<LEADER>sr", function() Snacks.picker.resume() end, desc = "Resume" },
         { "<LEADER>sh", function() Snacks.picker.help() end, desc = "Help pages" },
-        { "<LEADER>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer diagnostics" },
 
         -- Git
         { "<LEADER>g", function() Snacks.lazygit() end, desc = "Lazygit" },
