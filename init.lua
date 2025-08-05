@@ -265,6 +265,12 @@ require("lazy").setup({
     },
 
     {
+      "rachartier/tiny-inline-diagnostic.nvim",
+      event = "VeryLazy",
+      opts = {},
+    },
+
+    {
       "folke/noice.nvim",
       event = "VeryLazy",
       dependencies = {
