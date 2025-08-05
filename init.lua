@@ -265,9 +265,36 @@ require("lazy").setup({
     },
 
     {
-      "rachartier/tiny-inline-diagnostic.nvim",
+      'echasnovski/mini.nvim', version = false,
       event = "VeryLazy",
-      opts = {},
+      config = function()
+        --  Better arround & inside
+        --  - va)  - [V]isually select [A]round [)]paren
+        --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
+        --  - ci'  - [C]hange [I]nside [']quote
+        require("mini.ai").setup({
+          n_lines = 500,
+          silect = false,
+        })
+
+        require("mini.move").setup({
+          mappings = {
+            -- Move visual selection in Visual mode
+            left = "H",
+            right = "L",
+            down = "J",
+            up = "K",
+
+            -- Move current line in Normal mode
+            -- "" disables mapping
+            line_left = "{",
+            line_right = "}",
+            line_down = "", line_up = "",
+          }
+        })
+
+        require("mini.pairs").setup()
+      end,
     },
 
     {
@@ -355,40 +382,34 @@ require("lazy").setup({
       },
     },
 
+    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+
     {
-      'echasnovski/mini.nvim', version = false,
+      "rachartier/tiny-inline-diagnostic.nvim",
       event = "VeryLazy",
-      config = function()
-        --  Better arround & inside
-        --  - va)  - [V]isually select [A]round [)]paren
-        --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-        --  - ci'  - [C]hange [I]nside [']quote
-        require("mini.ai").setup({
-          n_lines = 500,
-          silect = false,
-        })
-
-        require("mini.move").setup({
-          mappings = {
-            -- Move visual selection in Visual mode
-            left = "H",
-            right = "L",
-            down = "J",
-            up = "K",
-
-            -- Move current line in Normal mode
-            -- "" disables mapping
-            line_left = "{",
-            line_right = "}",
-            line_down = "", line_up = "",
-          }
-        })
-
-        require("mini.pairs").setup()
-      end,
+      opts = {},
     },
 
-    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+    {
+      "saghen/blink.cmp", version = "1.*",
+      event = "VeryLazy",
+      dependencies = {
+        { "rafamadriz/friendly-snippets", lazy = true },
+      },
+      opts = {
+        keymap = { preset = "default" },
+        completion = {
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 500,
+          },
+        },
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer" },
+        },
+        fuzzy = { implementation = "prefer_rust" },
+      },
+    },
 
     { "tpope/vim-repeat", event = "VeryLazy" },
 
@@ -488,27 +509,6 @@ require("lazy").setup({
           },
         }
       end,
-    },
-
-    {
-      "saghen/blink.cmp", version = "1.*",
-      event = "BufReadPre",
-      dependencies = {
-        { "rafamadriz/friendly-snippets", lazy = true },
-      },
-      opts = {
-        keymap = { preset = "default" },
-        completion = {
-          documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 500,
-          },
-        },
-        sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
-        },
-        fuzzy = { implementation = "prefer_rust" },
-      },
     },
 
     {
