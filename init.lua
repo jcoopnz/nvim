@@ -29,7 +29,6 @@ option.undofile = true
 option.ignorecase = true
 option.smartcase = true
 option.splitright = true
-option.inccommand = "nosplit"
 option.confirm = true
 option.smartindent = true
 option.updatetime = 50
