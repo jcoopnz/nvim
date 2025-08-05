@@ -234,15 +234,22 @@ require("lazy").setup({
     },
 
     {
-      "nvim-treesitter/nvim-treesitter", branch = "main",
+      "nvim-treesitter/nvim-treesitter", branch = "main", version = nil,
       lazy = false,
       build = ":TSUpdate",
       config = function()
-        require("nvim-treesitter").install({
+        local treesitter = require("nvim-treesitter")
+
+        treesitter.setup({
+          install_dir = vim.fn.stdpath("data") .. "/site"
+        })
+
+        treesitter.install({
           "angular",
           "bash",
           "css",
           "git_config",
+          "git_rebase",
           "gitignore",
           "go",
           "html",
@@ -256,8 +263,8 @@ require("lazy").setup({
           "regex",
           "scss",
           "svelte",
-          "typescript",
           "tsx",
+          "typescript",
           "vim",
           "yaml"
         })
