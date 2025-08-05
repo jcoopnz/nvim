@@ -61,14 +61,12 @@ map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
 map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight", silent = true })
 map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true  })
 map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true  })
-map.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions", silent = true })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
 map.set("n", "J", "mzJ`z", { desc = "Append line below", silent = true })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste", silent = true })
 map.set({"n", "v"}, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
-map.set("v", "<LEADER>=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
 map.set(
   "n", "<LEADER>z",
   ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>",
@@ -335,7 +333,9 @@ require("lazy").setup({
           config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
               callback = function()
-                map.set("n", "<LEADER>rs", vim.lsp.buf.rename, { desc = "Rename symbol" })
+                map.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions", silent = true })
+                map.set("v", "g=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
+                map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol", silent = true })
               end
             })
           end,
