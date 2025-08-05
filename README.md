@@ -16,6 +16,7 @@ git clone https://github.com/Jordy1311/nvim.git ~/.config/nvim && nvim
 rm -rf ~/.config/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
+rm -rf ~/.cache/nvim
 ```
 
 ## Ghostty config
