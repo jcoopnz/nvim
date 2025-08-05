@@ -506,12 +506,6 @@ require("lazy").setup({
     },
 
     {
-      "nvim-treesitter/nvim-treesitter-context",
-      event = "BufReadPost",
-      opts = {},
-    },
-
-    {
       "tpope/vim-surround",
       event = "BufReadPost",
     },
