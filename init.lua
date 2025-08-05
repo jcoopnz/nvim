@@ -238,8 +238,7 @@ require("lazy").setup({
       lazy = false,
       build = ":TSUpdate",
       config = function()
-        local treesitter = require("nvim-treesitter")
-        treesitter.install(
+        require("nvim-treesitter").install({
           "angular",
           "bash",
           "css",
@@ -258,9 +257,10 @@ require("lazy").setup({
           "scss",
           "svelte",
           "typescript",
+          "tsx",
           "vim",
           "yaml"
-        )
+        })
       end,
     },
 
