@@ -109,11 +109,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 require("lazy").setup({
   spec = {
     {
-      "catppuccin/nvim",
+      "folke/tokyonight.nvim",
       lazy = false, priority = 1001,
-      name = "catppuccin",
       opts = function()
-        vim.cmd([[colorscheme catppuccin-mocha]])
+        vim.cmd([[colorscheme tokyonight-night]])
       end,
     },
 
