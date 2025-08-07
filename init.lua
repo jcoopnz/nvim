@@ -239,8 +239,6 @@ require("lazy").setup({
       config = function()
         require("nvim-treesitter.configs").setup({
           auto_install = true,
-          sync_install = false,
-          ignore_install = {},
           highlight = { enable = true },
           ensure_installed = {
             "angular",
