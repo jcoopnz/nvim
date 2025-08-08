@@ -536,12 +536,12 @@ require("lazy").setup({
       },
       keys = {
         {
-          "<LEADER>x",
+          "<LEADER>xx",
           "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
           desc = "Diagnostics list",
         },
         {
-          "<LEADER>X",
+          "<LEADER>xt",
           "<CMD>Trouble todo toggle filter.buf=0<CR>",
           desc = "Todos list",
         },
