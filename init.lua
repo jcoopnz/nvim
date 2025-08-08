@@ -190,8 +190,6 @@ require("lazy").setup({
         { "<LEADER>e",  function() Snacks.explorer() end, desc = "File explorer" },
         { "<LEADER>nh",  function() Snacks.notifier.show_history() end, desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end, desc = "Dismiss all" },
-        { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next reference", mode = { "n", "t" } },
-        { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev reference", mode = { "n", "t" } },
         { "<LEADER>rf", function() Snacks.rename.rename_file() end, desc = "Rename file" },
       },
       init = function()
