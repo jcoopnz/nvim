@@ -253,6 +253,24 @@ require("lazy").setup({
     },
 
     {
+      "akinsho/bufferline.nvim", version = "*",
+      event = "VeryLazy",
+      opts = {
+        options = {
+          color_icons = true,
+          sort_by = "relative_directory",
+          truncate_names = false,
+        },
+      },
+      keys = {
+        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
+        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
+      },
+    },
+
+    {
       'echasnovski/mini.nvim', version = false,
       event = "VeryLazy",
       config = function()
@@ -318,6 +336,19 @@ require("lazy").setup({
     },
 
     {
+      "folke/persistence.nvim",
+      event = "VeryLazy",
+      opts = {},
+    },
+
+    {
+      "folke/todo-comments.nvim",
+      event = "VeryLazy",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {},
+    },
+
+    {
       "folke/which-key.nvim",
       event = "VeryLazy",
       opts = {
@@ -335,6 +366,42 @@ require("lazy").setup({
             { "<LEADER>u", group = "User settings" },
           },
         },
+      },
+    },
+
+    {
+      "github/copilot.vim",
+      event = "VeryLazy",
+    },
+
+    {
+      "lewis6991/gitsigns.nvim",
+      event = "VeryLazy",
+      opts = {
+        current_line_blame = true,
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = "eol",
+          delay = 1000,
+          ignore_whitespace = false,
+        },
+        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+        signs = {
+          add = { text = "+" },
+          change = { text = "~" },
+          delete = { text = "" },
+          topdelete = { text = "" },
+          changedelete = { text = "~/-" },
+          untracked = { text = "▎" },
+        },
+        signs_staged = {
+          add = { text = "+" },
+          change = { text = "~" },
+          delete = { text = "" },
+          topdelete = { text = "" },
+          changedelete = { text = "~/-" },
+        },
+        numhl = true,
       },
     },
 
@@ -370,102 +437,9 @@ require("lazy").setup({
       },
     },
 
-    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
-
-    {
-      "rachartier/tiny-inline-diagnostic.nvim",
-      event = "VeryLazy",
-      opts = {},
-    },
-
-    {
-      "saghen/blink.cmp", version = "1.*",
-      event = "VeryLazy",
-      dependencies = {
-        { "rafamadriz/friendly-snippets", lazy = true },
-      },
-      opts = {
-        keymap = { preset = "default" },
-        completion = {
-          documentation = {
-            auto_show = true,
-            auto_show_delay_ms = 500,
-          },
-        },
-        sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
-        },
-        fuzzy = { implementation = "prefer_rust" },
-      },
-    },
-
-    { "tpope/vim-repeat", event = "VeryLazy" },
-
-    {
-      "akinsho/bufferline.nvim", version = "*",
-      event = "BufReadPre",
-      opts = {
-        options = {
-          color_icons = true,
-          sort_by = "relative_directory",
-          truncate_names = false,
-        },
-      },
-      keys = {
-        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
-        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
-        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
-        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
-      },
-    },
-
-    {
-      "folke/todo-comments.nvim",
-      event = "BufReadPre",
-      dependencies = { "nvim-lua/plenary.nvim" },
-      opts = {},
-    },
-
-    {
-      "folke/persistence.nvim",
-      event = "BufReadPre",
-      opts = {},
-    },
-
-    {
-      "lewis6991/gitsigns.nvim",
-      event = "BufReadPre",
-      opts = {
-        current_line_blame = true,
-        current_line_blame_opts = {
-          virt_text = true,
-          virt_text_pos = "eol",
-          delay = 1000,
-          ignore_whitespace = false,
-        },
-        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-        signs = {
-          add = { text = "+" },
-          change = { text = "~" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "~/-" },
-          untracked = { text = "▎" },
-        },
-        signs_staged = {
-          add = { text = "+" },
-          change = { text = "~" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "~/-" },
-        },
-        numhl = true,
-      },
-    },
-
     {
       "nvim-lualine/lualine.nvim",
-      event = "BufReadPre",
+      event = "VeryLazy",
       opts = function()
         local noice = require("noice")
         return {
@@ -499,9 +473,40 @@ require("lazy").setup({
       end,
     },
 
+    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+
+    {
+      "rachartier/tiny-inline-diagnostic.nvim",
+      event = "VeryLazy",
+      opts = {},
+    },
+
+    {
+      "saghen/blink.cmp", version = "1.*",
+      event = "VeryLazy",
+      dependencies = {
+        { "rafamadriz/friendly-snippets", lazy = true },
+      },
+      opts = {
+        keymap = { preset = "default" },
+        completion = {
+          documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 500,
+          },
+        },
+        sources = {
+          default = { "lsp", "path", "snippets", "buffer" },
+        },
+        fuzzy = { implementation = "prefer_rust" },
+      },
+    },
+
+    { "tpope/vim-repeat", event = "VeryLazy" },
+
     {
       "tpope/vim-surround",
-      event = "BufReadPost",
+      event = "VeryLazy",
     },
 
     {
