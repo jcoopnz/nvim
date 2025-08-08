@@ -88,16 +88,6 @@ vim.schedule(function()
   option.clipboard = "unnamedplus"
 end)
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "TelescopeResults",
-  callback = function(ctx)
-    vim.api.nvim_buf_call(ctx.buf, function()
-      vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-      vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-    end)
-  end,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked text",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
