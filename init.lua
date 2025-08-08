@@ -354,7 +354,7 @@ require("lazy").setup({
             vim.api.nvim_create_autocmd("LspAttach", {
               callback = function()
                 map.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions", silent = true })
-                map.set("v", "g=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
+                map.set({ "v", "n" }, "g=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
                 map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol", silent = true })
               end
             })
