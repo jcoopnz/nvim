@@ -113,12 +113,7 @@ require("lazy").setup({
         dashboard = {
           preset = {
             keys = {
-              { icon = "🗒️ ", key = "n", desc = "New file", action = ":ene | startinsert" },
-              { icon = "🔍 ", key = "f", desc = "Find file", action = ":lua Snacks.picker.smart()" },
-              { icon = "🔬 ", key = "/", desc = "Grep", action = ":lua Snacks.dashboard.pick('live_grep')" },
-              { icon = "🗃️ ", key = ".", desc = "Recent files", action = ":lua Snacks.picker.recent()" },
               { icon = "🛋️ ", key = "s", desc = "Restore session", section = "session" },
-              { icon = "🪾 ", key = "g", desc = "Lazygit", action = ":lua Snacks.lazygit()" },
               { icon = "📦 ", key = "m", desc = "Mason", action = ":Mason" },
               { icon = "😴 ", key = "l", desc = "Lazy", action = ":Lazy" },
               { icon = "🚪 ", key = "q", desc = "Quit", action = ":qa" },
