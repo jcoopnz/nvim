@@ -261,15 +261,15 @@ require("lazy").setup({
         --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
         --  - ci'  - [C]hange [I]nside [']quote
         require("mini.ai").setup({
-          n_lines = 500,
+          n_lines = 200,
           silect = false,
         })
 
         require("mini.move").setup({
           mappings = {
             -- Move visual selection in Visual mode
-            left = "H",
-            right = "L",
+            left = "{",
+            right = "}",
             down = "J",
             up = "K",
 
