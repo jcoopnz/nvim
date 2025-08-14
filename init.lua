@@ -486,10 +486,7 @@ require("lazy").setup({
 
     { "tpope/vim-repeat", event = "VeryLazy" },
 
-    {
-      "tpope/vim-surround",
-      event = "VeryLazy",
-    },
+    { "tpope/vim-surround", event = "VeryLazy" },
 
     {
       "akinsho/bufferline.nvim", version = "*",
