@@ -366,6 +366,11 @@ require("lazy").setup({
     {
       "github/copilot.vim",
       event = "VeryLazy",
+      config = function()
+        map.set("i", "<C-j>", "<Plug>(copilot-next)", { desc = "Next Copilot suggestion" })
+        map.set("i", "<C-k>", "<Plug>(copilot-previous)", { desc = "Previous Copilot suggestion" })
+        map.set("i", "<C-d>", "<Plug>(copilot-dismiss)", { desc = "Dissmiss Copilot suggestion" })
+      end,
     },
 
     {
