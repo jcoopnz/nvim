@@ -318,12 +318,6 @@ require("lazy").setup({
     },
 
     {
-      "folke/persistence.nvim",
-      event = "VeryLazy",
-      opts = {},
-    },
-
-    {
       "folke/todo-comments.nvim",
       event = "VeryLazy",
       dependencies = { "nvim-lua/plenary.nvim" },
@@ -487,6 +481,12 @@ require("lazy").setup({
     { "tpope/vim-repeat", event = "VeryLazy" },
 
     { "tpope/vim-surround", event = "VeryLazy" },
+
+    {
+      "folke/persistence.nvim",
+      event = "BufReadPre",
+      opts = {},
+    },
 
     {
       "akinsho/bufferline.nvim", version = "*",
