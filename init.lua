@@ -253,6 +253,24 @@ require("lazy").setup({
     },
 
     {
+      "akinsho/bufferline.nvim", version = "*",
+      event = "VeryLazy",
+      opts = {
+        options = {
+          color_icons = true,
+          sort_by = "relative_directory",
+          truncate_names = false,
+        },
+      },
+      keys = {
+        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
+        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
+      },
+    },
+
+    {
       'echasnovski/mini.nvim', version = false,
       event = "VeryLazy",
       config = function()
@@ -486,24 +504,6 @@ require("lazy").setup({
       "folke/persistence.nvim",
       event = "BufReadPre",
       opts = {},
-    },
-
-    {
-      "akinsho/bufferline.nvim", version = "*",
-      event = "BufEnter",
-      opts = {
-        options = {
-          color_icons = true,
-          sort_by = "relative_directory",
-          truncate_names = false,
-        },
-      },
-      keys = {
-        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
-        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
-        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
-        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
-      },
     },
 
     {
