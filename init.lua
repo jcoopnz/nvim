@@ -188,7 +188,7 @@ require("lazy").setup({
 
         -- Others
         { "<LEADER>e",  function() Snacks.explorer() end, desc = "File explorer" },
-        { "<LEADER>nh",  function() Snacks.notifier.show_history() end, desc = "History" },
+        { "<LEADER>nh", function() Snacks.notifier.show_history() end, desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end, desc = "Dismiss all" },
         { "<LEADER>rf", function() Snacks.rename.rename_file() end, desc = "Rename file" },
       },
