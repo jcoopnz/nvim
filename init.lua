@@ -96,6 +96,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Disable Copilot on any file in directory ~/Documents/work/
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.expand("%:p"):match("^" .. vim.fn.expand("~/Documents/work/")) then
+      vim.g.copilot_filetypes = { ["*"] = false }
+    else
+      vim.g.copilot_filetypes = { ["*"] = true }
+    end
+  end,
+})
+
 require("lazy").setup({
   spec = {
     {
