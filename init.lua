@@ -100,10 +100,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
-    if vim.fn.expand("%:p"):match("^" .. vim.fn.expand("~/Documents/work/")) then
-      vim.g.copilot_filetypes = { ["*"] = false }
-    else
+    if vim.fn.expand("%:p"):match("^" .. vim.fn.expand("~/Documents/personal/webdev/")) then
       vim.g.copilot_filetypes = { ["*"] = true }
+    else
+      vim.g.copilot_filetypes = { ["*"] = false }
     end
   end,
 })
