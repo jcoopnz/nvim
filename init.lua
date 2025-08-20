@@ -101,8 +101,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
     local copilot_dirs = {
-      "~/Documents/personal/webdev/",
-      "~/.config/nvim/",
+      "~/Documents/personal/webdev/", -- work mac
+      "~/Documents/dev/", -- personal mac
+      "~/.config/nvim/", -- both
     }
 
     local current_path = vim.fn.expand("%:p")
