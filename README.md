@@ -28,8 +28,8 @@ font-size = 16
 scrollback-limit = 10485760
 shell-integration = detect
 shell-integration-features = title,no-cursor
-theme = catppuccin-mocha
-unfocused-split-opacity = 0.4
+theme = tokyonight_night
+unfocused-split-opacity = 0.3
 window-subtitle = working-directory
 
 keybind = super+up=goto_split:up
