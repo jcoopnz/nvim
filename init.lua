@@ -175,8 +175,6 @@ require("lazy").setup({
         words = { enabled = true },
       },
       keys = {
-        ---@module "snacks"
-
         -- Find Files
         { "<LEADER><LEADER>", function() Snacks.picker.smart() end,     desc = "Smart find files" },
         { "<LEADER>ff",       function() Snacks.picker.git_files() end, desc = "Git files" },
@@ -607,6 +605,7 @@ require("lazy").setup({
       opts = {
         library = {
           { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          { path = "snacks.nvim",        words = { "Snacks" } },
         },
       },
     },
