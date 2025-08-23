@@ -88,6 +88,7 @@ vim.schedule(function()
   option.clipboard = "unnamedplus"
 end)
 
+-- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked text",
   group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
@@ -96,7 +97,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Only enable Copilot in certain directories
+-- enable Copilot only in certain directories
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
