@@ -5,7 +5,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
+      { out,                            "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -59,14 +59,14 @@ map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus down", silent = true })
 map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus up", silent = true })
 map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
 map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight", silent = true })
-map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true  })
-map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true  })
+map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true })
+map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
 map.set("n", "J", "mzJ`z", { desc = "Append line below", silent = true })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste", silent = true })
-map.set({"n", "v"}, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
+map.set({ "n", "v" }, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
 map.set(
   "n", "<LEADER>z",
   ":let @+=fnamemodify(expand(\"%:p\"), \":.\")<CR>",
@@ -103,8 +103,8 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     local copilot_dirs = {
       "~/Documents/personal/webdev/", -- work mac
-      "~/Documents/dev/", -- personal mac
-      "~/.config/nvim/", -- both
+      "~/Documents/dev/",             -- personal mac
+      "~/.config/nvim/",              -- both
     }
 
     local current_path = vim.fn.expand("%:p")
@@ -124,7 +124,8 @@ require("lazy").setup({
   spec = {
     {
       "folke/tokyonight.nvim",
-      lazy = false, priority = 1001,
+      lazy = false,
+      priority = 1001,
       opts = function()
         vim.cmd([[colorscheme tokyonight-night]])
       end,
@@ -132,7 +133,8 @@ require("lazy").setup({
 
     {
       "folke/snacks.nvim",
-      lazy = false, priority = 1000,
+      lazy = false,
+      priority = 1000,
       opts = {
         dashboard = {
           preset = {
@@ -176,9 +178,9 @@ require("lazy").setup({
         ---@module "snacks"
 
         -- Find Files
-        { "<LEADER><LEADER>", function() Snacks.picker.smart() end, desc = "Smart find files" },
-        { "<LEADER>ff", function() Snacks.picker.git_files() end, desc = "Git files" },
-        { "<LEADER>.", function() Snacks.picker.recent() end, desc = "Find recent files" },
+        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,     desc = "Smart find files" },
+        { "<LEADER>ff",       function() Snacks.picker.git_files() end, desc = "Git files" },
+        { "<LEADER>.",        function() Snacks.picker.recent() end,    desc = "Find recent files" },
         {
           "<LEADER>fc",
           function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
@@ -186,7 +188,7 @@ require("lazy").setup({
         },
 
         -- Search Grep
-        { "<LEADER>/",  function() Snacks.picker.grep() end, desc = "Search grep" },
+        { "<LEADER>/",  function() Snacks.picker.grep() end,            desc = "Search grep" },
         {
           "<LEADER>*",
           function() Snacks.picker.grep_word() end,
@@ -195,29 +197,29 @@ require("lazy").setup({
         },
 
         -- Find/Search Other
-        { "<LEADER>sr", function() Snacks.picker.resume() end, desc = "Resume" },
-        { "<LEADER>sh", function() Snacks.picker.help() end, desc = "Help pages" },
+        { "<LEADER>sr", function() Snacks.picker.resume() end,          desc = "Resume" },
+        { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help pages" },
 
         -- Git
-        { "<LEADER>g", function() Snacks.lazygit() end, desc = "Lazygit" },
+        { "<LEADER>g",  function() Snacks.lazygit() end,                desc = "Lazygit" },
 
         -- LSP
-        { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
-        { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "Goto references" },
-        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP symbols" },
-        { "<LEADER>uL", function() Snacks.picker.lsp_config() end, desc = "LSP config" },
+        { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
+        { "gr",         function() Snacks.picker.lsp_references() end,  nowait = true,           desc = "Goto references" },
+        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "LSP symbols" },
+        { "<LEADER>uL", function() Snacks.picker.lsp_config() end,      desc = "LSP config" },
 
         -- Buffers
-        { "<LEADER>bd", function() Snacks.bufdelete() end, desc = "Delete" },
-        { "<LEADER>bo", function() Snacks.bufdelete.other() end, desc = "Delete others" },
-        { "<LEADER>,",  function() Snacks.picker.buffers() end, desc = "Search buffers" },
-        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end, desc = "Open buffers" },
+        { "<LEADER>bd", function() Snacks.bufdelete() end,              desc = "Delete" },
+        { "<LEADER>bo", function() Snacks.bufdelete.other() end,        desc = "Delete others" },
+        { "<LEADER>,",  function() Snacks.picker.buffers() end,         desc = "Search buffers" },
+        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
 
         -- Others
-        { "<LEADER>e",  function() Snacks.explorer() end, desc = "File explorer" },
-        { "<LEADER>nh", function() Snacks.notifier.show_history() end, desc = "History" },
-        { "<LEADER>nd", function() Snacks.notifier.hide() end, desc = "Dismiss all" },
-        { "<LEADER>rf", function() Snacks.rename.rename_file() end, desc = "Rename file" },
+        { "<LEADER>e",  function() Snacks.explorer() end,               desc = "File explorer" },
+        { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
+        { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
+        { "<LEADER>rf", function() Snacks.rename.rename_file() end,     desc = "Rename file" },
       },
       init = function()
         vim.api.nvim_create_autocmd("User", {
@@ -280,7 +282,8 @@ require("lazy").setup({
     },
 
     {
-      'echasnovski/mini.nvim', version = false,
+      'echasnovski/mini.nvim',
+      version = false,
       event = "VeryLazy",
       config = function()
         --  Better arround & inside
@@ -304,7 +307,8 @@ require("lazy").setup({
             -- "" disables mapping
             line_left = "{",
             line_right = "}",
-            line_down = "", line_up = "",
+            line_down = "",
+            line_up = "",
           }
         })
 
@@ -337,10 +341,10 @@ require("lazy").setup({
           inc_rename = false,
           lsp_doc_border = true,
         },
-        routes = {{
+        routes = { {
           view = "notify",
           filter = { event = "msg_showmode" },
-        }},
+        } },
       },
     },
 
@@ -431,7 +435,8 @@ require("lazy").setup({
             vim.api.nvim_create_autocmd("LspAttach", {
               callback = function()
                 map.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions", silent = true })
-                map.set({ "v", "n" }, "g=", vim.lsp.buf.format, { desc = "Format visual selection", silent = true })
+                map.set({ "v", "n" }, "<LEADER>=", vim.lsp.buf.format,
+                  { desc = "Format visual selection", silent = true })
                 map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol", silent = true })
               end
             })
@@ -458,8 +463,8 @@ require("lazy").setup({
             theme = "auto",
             globalstatus = true,
             disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
-            component_separators = { left = "", right = ""},
-            section_separators = { left = "", right = ""},
+            component_separators = { left = "", right = "" },
+            section_separators = { left = "", right = "" },
           },
           sections = {
             lualine_a = { "mode" },
@@ -492,7 +497,8 @@ require("lazy").setup({
     },
 
     {
-      "saghen/blink.cmp", version = "1.*",
+      "saghen/blink.cmp",
+      version = "1.*",
       event = "VeryLazy",
       dependencies = {
         { "rafamadriz/friendly-snippets", lazy = true },
@@ -512,12 +518,13 @@ require("lazy").setup({
       },
     },
 
-    { "tpope/vim-repeat", event = "VeryLazy" },
+    { "tpope/vim-repeat",            event = "VeryLazy" },
 
-    { "tpope/vim-surround", event = "VeryLazy" },
+    { "tpope/vim-surround",          event = "VeryLazy" },
 
     {
-      "akinsho/bufferline.nvim", version = "*",
+      "akinsho/bufferline.nvim",
+      version = "*",
       event = "BufReadPre",
       opts = {
         options = {
@@ -527,10 +534,10 @@ require("lazy").setup({
         },
       },
       keys = {
-        { "L", ":BufferLineCycleNext<CR>", desc = "Next buffer", silent = true },
-        { "H", ":BufferLineCyclePrev<CR>", desc = "Previous buffer", silent = true },
-        { "<D-L>", ":BufferLineMoveNext<CR>", desc = "Move buffer forwards", silent = true },
-        { "<D-H>", ":BufferLineMovePrev<CR>", desc = "Move buffer backwards", silent = true },
+        { "L",     ":BufferLineCycleNext<CR>", desc = "Next buffer",           silent = true },
+        { "H",     ":BufferLineCyclePrev<CR>", desc = "Previous buffer",       silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>",  desc = "Move buffer forwards",  silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>",  desc = "Move buffer backwards", silent = true },
       },
     },
 
@@ -590,7 +597,7 @@ require("lazy").setup({
       dependencies = { "nvim-tree/nvim-web-devicons" },
       opts = {},
       keys = {
-        {"-", "<CMD>Oil<CR>", desc = "Open Oil file explorer", silent = true},
+        { "-", "<CMD>Oil<CR>", desc = "Open Oil file explorer", silent = true },
       },
     },
 
