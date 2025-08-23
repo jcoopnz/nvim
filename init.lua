@@ -53,17 +53,17 @@ option.shiftwidth = 2
 option.expandtab = true
 option.scrolloff = 8
 
-map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus left", silent = true })
-map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus right", silent = true })
-map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus down", silent = true })
-map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus up", silent = true })
-map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write file", silent = true })
-map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search highlight", silent = true })
+map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left", silent = true })
+map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right", silent = true })
+map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Focus down", silent = true })
+map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Focus up", silent = true })
+map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write", silent = true })
+map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search", silent = true })
 map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true })
 map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
-map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Vertical split", silent = true })
+map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Split", silent = true })
 map.set("n", "J", "mzJ`z", { desc = "Append line below", silent = true })
 map.set("x", "<LEADER>p", "\"_dP", { desc = "Special paste", silent = true })
 map.set({ "n", "v" }, "<LEADER>d", "\"_d", { desc = "Special delete", silent = true })
@@ -80,7 +80,7 @@ map.set(
 map.set(
   "n", "<LEADER>S",
   ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<LEFT><LEFT><LEFT>",
-  { desc = "Substitute cursor word" }
+  { desc = "Substitute word" }
 )
 
 -- scheduled to improve load
@@ -196,7 +196,7 @@ require("lazy").setup({
 
         -- Find/Search Other
         { "<LEADER>sr", function() Snacks.picker.resume() end,          desc = "Resume" },
-        { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help pages" },
+        { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help" },
 
         -- Git
         { "<LEADER>g",  function() Snacks.lazygit() end,                desc = "Lazygit" },
@@ -204,7 +204,7 @@ require("lazy").setup({
         -- LSP
         { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
         { "gr",         function() Snacks.picker.lsp_references() end,  desc = "Goto references", nowait = true },
-        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "LSP symbols" },
+        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "Symbols" },
         { "<LEADER>uL", function() Snacks.picker.lsp_config() end,      desc = "LSP config" },
 
         -- Buffers
@@ -214,7 +214,7 @@ require("lazy").setup({
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
 
         -- Others
-        { "<LEADER>e",  function() Snacks.explorer() end,               desc = "File explorer" },
+        { "<LEADER>e",  function() Snacks.explorer() end,               desc = "Explorer" },
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
         { "<LEADER>rf", function() Snacks.rename.rename_file() end,     desc = "Rename file" },
@@ -375,11 +375,11 @@ require("lazy").setup({
       "github/copilot.vim",
       event = "VeryLazy",
       config = function()
-        map.set("i", "<C-p>", "<Plug>(copilot-suggest)", { desc = "Make Copilot suggestion" })
-        map.set("i", "<C-j>", "<Plug>(copilot-next)", { desc = "Next Copilot suggestion" })
-        map.set("i", "<C-k>", "<Plug>(copilot-previous)", { desc = "Previous Copilot suggestion" })
-        map.set("i", "<C-l>", "<Plug>(copilot-accept-line)", { desc = "Accept Copilot suggestion line" })
-        map.set("i", "<C-h>", "<Plug>(copilot-dismiss)", { desc = "Dismiss Copilot suggestion" })
+        map.set("i", "<C-p>", "<Plug>(copilot-suggest)", { desc = "Make suggestion" })
+        map.set("i", "<C-j>", "<Plug>(copilot-next)", { desc = "Next suggestion" })
+        map.set("i", "<C-k>", "<Plug>(copilot-previous)", { desc = "Previous suggestion" })
+        map.set("i", "<C-l>", "<Plug>(copilot-accept-line)", { desc = "Accept line" })
+        map.set("i", "<C-h>", "<Plug>(copilot-dismiss)", { desc = "Dismiss suggestion" })
       end,
     },
 
@@ -431,7 +431,7 @@ require("lazy").setup({
               callback = function()
                 map.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions", silent = true })
                 map.set({ "v", "n" }, "<LEADER>=", vim.lsp.buf.format,
-                  { desc = "Format visual selection", silent = true })
+                  { desc = "Format", silent = true })
                 map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol", silent = true })
               end
             })
@@ -531,8 +531,8 @@ require("lazy").setup({
       keys = {
         { "L",     ":BufferLineCycleNext<CR>", desc = "Next buffer",           silent = true },
         { "H",     ":BufferLineCyclePrev<CR>", desc = "Previous buffer",       silent = true },
-        { "<D-L>", ":BufferLineMoveNext<CR>",  desc = "Move buffer forwards",  silent = true },
-        { "<D-H>", ":BufferLineMovePrev<CR>",  desc = "Move buffer backwards", silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>",  desc = "Move buffer forward",  silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>",  desc = "Move buffer back", silent = true },
       },
     },
 
@@ -576,12 +576,12 @@ require("lazy").setup({
         {
           "<LEADER>xx",
           "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
-          desc = "Diagnostics list",
+          desc = "Diagnostic list",
         },
         {
           "<LEADER>xt",
           "<CMD>Trouble todo toggle filter.buf=0<CR>",
-          desc = "Todos list",
+          desc = "Todo list",
         },
       },
     },
@@ -592,7 +592,7 @@ require("lazy").setup({
       dependencies = { "nvim-tree/nvim-web-devicons" },
       opts = {},
       keys = {
-        { "-", "<CMD>Oil<CR>", desc = "Open Oil file explorer", silent = true },
+        { "-", "<CMD>Oil<CR>", desc = "Open Oil", silent = true },
       },
     },
 
