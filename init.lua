@@ -203,7 +203,7 @@ require("lazy").setup({
 
         -- LSP
         { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
-        { "gr",         function() Snacks.picker.lsp_references() end,  nowait = true,           desc = "Goto references" },
+        { "gr",         function() Snacks.picker.lsp_references() end,  desc = "Goto references", nowait = true },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "LSP symbols" },
         { "<LEADER>uL", function() Snacks.picker.lsp_config() end,      desc = "LSP config" },
 
