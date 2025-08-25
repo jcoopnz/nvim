@@ -98,25 +98,26 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- enable Copilot only in certain directories
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileReadPost", {
   pattern = "*",
   callback = function()
-    local copilot_dirs = {
-      "~/Documents/personal/webdev/", -- work mac
-      "~/Documents/dev/",             -- personal mac
-      "~/.config/nvim/",              -- both
+    local copilot_enabled_dirs = {
+      "/Documents/personal/webdev/", -- work mac
+      "/Documents/dev/",             -- personal mac
+      "/.config/nvim/",              -- both
     }
 
-    local current_path = vim.fn.expand("%:p")
-    local is_whitelisted = false
-    for _, dir in ipairs(copilot_dirs) do
-      if current_path:match("^" .. vim.fn.expand(dir)) then
-        is_whitelisted = true
+    local current_dir = vim.fn.expand("%:p:h")
+    local copilot_enabled = false
+
+    for _, dir in ipairs(copilot_enabled_dirs) do
+      if string.find(current_dir, dir) then
+        copilot_enabled = true
         break
       end
     end
 
-    vim.g.copilot_filetypes = { ["*"] = is_whitelisted }
+    vim.g.copilot_filetypes = { ["*"] = copilot_enabled }
   end,
 })
 
