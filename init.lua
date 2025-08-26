@@ -98,13 +98,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- enable Copilot only in certain directories
-vim.api.nvim_create_autocmd("FileReadPost", {
+vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function()
     local copilot_enabled_dirs = {
-      "/Documents/personal/webdev/", -- work mac
-      "/Documents/dev/",             -- personal mac
-      "/.config/nvim/",              -- both
+      "Documents/personal/webdev", -- work mac
+      "Documents/dev",             -- personal mac
+      ".config/nvim",              -- both
     }
 
     local current_dir = vim.fn.expand("%:p:h")
@@ -116,6 +116,7 @@ vim.api.nvim_create_autocmd("FileReadPost", {
         break
       end
     end
+
 
     vim.g.copilot_filetypes = { ["*"] = copilot_enabled }
   end,
