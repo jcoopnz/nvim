@@ -164,7 +164,12 @@ require("lazy").setup({
         },
         picker = {
           enabled = true,
-          layout = { cycle = false },
+          layout = {
+            cycle = false,
+            preset = function()
+              return vim.o.columns >= 160 and "default" or "vertical"
+            end,
+          },
         },
         bufdelete = { enabled = true },
         indent = { enabled = true },
