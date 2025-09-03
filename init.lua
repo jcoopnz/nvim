@@ -614,16 +614,6 @@ require("lazy").setup({
     },
 
     {
-      'stevearc/oil.nvim',
-      cmd = "Trouble",
-      dependencies = { "nvim-tree/nvim-web-devicons" },
-      opts = {},
-      keys = {
-        { "-", "<CMD>Oil<CR>", desc = "Open Oil", silent = true },
-      },
-    },
-
-    {
       "folke/lazydev.nvim",
       ft = "lua",
       opts = {
