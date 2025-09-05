@@ -289,10 +289,7 @@ require("lazy").setup({
         --  - va)  - [V]isually select [A]round [)]paren
         --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
         --  - ci'  - [C]hange [I]nside [']quote
-        require("mini.ai").setup({
-          n_lines = 200,
-          silect = false,
-        })
+        require("mini.ai").setup({ n_lines = 200, silect = false })
 
         require("mini.move").setup({
           mappings = {
@@ -440,11 +437,7 @@ require("lazy").setup({
         },
       },
       opts = {
-        ensure_installed = {
-          "ast_grep",
-          "lua_ls",
-          "ts_ls"
-        },
+        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte" },
       },
     },
 
@@ -530,30 +523,10 @@ require("lazy").setup({
         },
       },
       keys = {
-        {
-          "L",
-          ":BufferLineCycleNext<CR>",
-          desc = "Next buffer",
-          silent = true
-        },
-        {
-          "H",
-          ":BufferLineCyclePrev<CR>",
-          desc = "Previous buffer",
-          silent = true
-        },
-        {
-          "<D-L>",
-          ":BufferLineMoveNext<CR>",
-          desc = "Move buffer forward",
-          silent = true
-        },
-        {
-          "<D-H>",
-          ":BufferLineMovePrev<CR>",
-          desc = "Move buffer back",
-          silent = true
-        },
+        { "L",     ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
+        { "H",     ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
+        { "<D-L>", ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
+        { "<D-H>", ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
       },
     },
 
@@ -594,16 +567,8 @@ require("lazy").setup({
         auto_close = true,
       },
       keys = {
-        {
-          "<LEADER>xx",
-          "<CMD>Trouble diagnostics toggle filter.buf=0<CR>",
-          desc = "Diagnostic list",
-        },
-        {
-          "<LEADER>xt",
-          "<CMD>Trouble todo toggle filter.buf=0<CR>",
-          desc = "Todo list",
-        },
+        { "<LEADER>xx", "<CMD>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Diagnostic list" },
+        { "<LEADER>xt", "<CMD>Trouble todo toggle filter.buf=0<CR>",        desc = "Todo list" },
       },
     },
 
