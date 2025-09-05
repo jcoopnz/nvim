@@ -20,7 +20,6 @@ local map = vim.keymap
 
 global.mapleader = " "
 global.maplocalleader = " "
-global.have_nerd_font = true
 
 -- behavioural
 option.autoread = true
@@ -106,7 +105,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
       "Documents/dev",             -- personal mac
       ".config/nvim",              -- both
     }
-
     local current_dir = vim.fn.expand("%:p:h")
     local copilot_enabled = false
 
@@ -116,7 +114,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         break
       end
     end
-
 
     vim.g.copilot_filetypes = { ["*"] = copilot_enabled }
   end,
@@ -129,7 +126,7 @@ require("lazy").setup({
       lazy = false,
       priority = 1001,
       opts = function()
-        vim.cmd([[colorscheme tokyonight-night]])
+        vim.cmd([[colorscheme tokyonight-moon]])
       end,
     },
 
