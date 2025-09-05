@@ -155,10 +155,7 @@ require("lazy").setup({
             { section = "startup" },
           },
         },
-        explorer = {
-          enabled = true,
-          auto_close = true,
-        },
+        explorer = { enabled = true },
         picker = {
           enabled = true,
           layout = {
