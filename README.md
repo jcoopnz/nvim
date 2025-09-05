@@ -28,9 +28,10 @@ font-size = 16
 scrollback-limit = 10485760
 shell-integration = detect
 shell-integration-features = title,no-cursor
-theme = tokyonight_night
+theme = tokyonight_moon
 unfocused-split-opacity = 0.3
 window-subtitle = working-directory
+mouse-hide-while-typing = true
 
 keybind = super+up=goto_split:up
 keybind = super+down=goto_split:down
