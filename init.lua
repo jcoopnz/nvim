@@ -155,7 +155,6 @@ require("lazy").setup({
             { section = "startup" },
           },
         },
-        explorer = { enabled = true },
         picker = {
           enabled = true,
           layout = {
@@ -166,9 +165,10 @@ require("lazy").setup({
           },
         },
         bufdelete = { enabled = true },
+        explorer = { enabled = true },
+        image = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
-        image = { enabled = true },
         lazygit = { enable = true },
         notifier = { enable = true },
         notify = { enable = true },
