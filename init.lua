@@ -31,7 +31,7 @@ option.splitright = true
 option.confirm = true
 option.smartindent = true
 option.updatetime = 50
-option.timeoutlen = 500
+option.timeoutlen = 1000
 
 -- visual
 option.wrap = true
@@ -215,7 +215,7 @@ require("lazy").setup({
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
 
         -- Others
-        { "<LEADER>e",  function() Snacks.explorer() end,               desc = "Explorer" },
+        { "<LEADER>e",  function() Snacks.explorer({auto_close=true}) end,               desc = "Explorer" },
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
         { "<LEADER>rf", function() Snacks.rename.rename_file() end,     desc = "Rename file" },
