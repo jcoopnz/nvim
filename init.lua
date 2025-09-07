@@ -172,7 +172,6 @@ require("lazy").setup({
         lazygit = { enable = true },
         notifier = { enable = true },
         notify = { enable = true },
-        scroll = { enable = true },
         words = { enabled = true },
       },
       keys = {
