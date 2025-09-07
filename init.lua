@@ -285,29 +285,22 @@ require("lazy").setup({
       version = false,
       event = "VeryLazy",
       config = function()
-        --  Better arround & inside
-        --  - va)  - [V]isually select [A]round [)]paren
-        --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-        --  - ci'  - [C]hange [I]nside [']quote
         require("mini.ai").setup({ n_lines = 200, silect = false })
-
         require("mini.move").setup({
           mappings = {
+            -- "" disables mapping
             -- Move visual selection in Visual mode
             left = "{",
             right = "}",
             down = "J",
             up = "K",
-
             -- Move current line in Normal mode
-            -- "" disables mapping
             line_left = "{",
             line_right = "}",
             line_down = "",
             line_up = "",
           }
         })
-
         require("mini.pairs").setup()
       end,
     },
@@ -358,12 +351,12 @@ require("lazy").setup({
           {
             mode = { "n", "v" },
             { "<LEADER>b", group = "Buffer" },
-            { "<LEADER>x", group = "Diagnostics" },
             { "<LEADER>f", group = "Find" },
             { "<LEADER>n", group = "Notification" },
             { "<LEADER>r", group = "Rename" },
             { "<LEADER>s", group = "Search" },
             { "<LEADER>u", group = "User settings" },
+            { "<LEADER>x", group = "Diagnostics" },
           },
         },
       },
@@ -428,8 +421,7 @@ require("lazy").setup({
             vim.api.nvim_create_autocmd("LspAttach", {
               callback = function()
                 map.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code actions", silent = true })
-                map.set({ "v", "n" }, "<LEADER>=", vim.lsp.buf.format,
-                  { desc = "Format", silent = true })
+                map.set({ "v", "n" }, "<LEADER>=", vim.lsp.buf.format, { desc = "Format", silent = true })
                 map.set("n", "<LEADER>rn", vim.lsp.buf.rename, { desc = "Rename symbol", silent = true })
               end
             })
