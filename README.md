@@ -23,14 +23,19 @@ rm -rf ~/.cache/nvim
 
 ```console
 auto-update = check
-cursor-style = block
-font-size = 16
-scrollback-limit = 10485760
 shell-integration = detect
 shell-integration-features = title,no-cursor
+scrollback-limit = 10485760
+
+font-size = 16
+bold-is-bright = true
 theme = tokyonight_moon
-unfocused-split-opacity = 0.3
 window-subtitle = working-directory
+window-padding-x = 2
+unfocused-split-opacity = 0.3
+
+cursor-style = block
+cursor-click-to-move = true
 mouse-hide-while-typing = true
 
 keybind = super+up=goto_split:up
