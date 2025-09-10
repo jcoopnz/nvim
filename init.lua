@@ -286,6 +286,7 @@ require("lazy").setup({
       config = function()
         require("mini.ai").setup({ n_lines = 200, silect = false })
         require("mini.files").setup()
+        require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
             -- Visual
@@ -466,8 +467,6 @@ require("lazy").setup({
         }
       end,
     },
-
-    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
     {
       "rachartier/tiny-inline-diagnostic.nvim",
