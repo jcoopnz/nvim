@@ -215,7 +215,6 @@ require("lazy").setup({
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
 
         -- Others
-        { "<LEADER>e",  function() Snacks.explorer({auto_close=true}) end,               desc = "Explorer" },
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
         { "<LEADER>rf", function() Snacks.rename.rename_file() end,     desc = "Rename file" },
@@ -286,6 +285,7 @@ require("lazy").setup({
       event = "VeryLazy",
       config = function()
         require("mini.ai").setup({ n_lines = 200, silect = false })
+        require("mini.files").setup()
         require("mini.move").setup({
           mappings = {
             -- Visual
@@ -303,6 +303,9 @@ require("lazy").setup({
         require("mini.pairs").setup()
         require("mini.surround").setup()
       end,
+      keys = {
+        { "<LEADER>e", function() require("mini.files").open() end, desc = "Explorer" },
+      }
     },
 
     {
