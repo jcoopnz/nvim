@@ -287,13 +287,12 @@ require("lazy").setup({
         require("mini.ai").setup({ n_lines = 200, silect = false })
         require("mini.move").setup({
           mappings = {
-            -- "" disables mapping
-            -- Move visual selection in Visual mode
+            -- Visual
             left = "{",
             right = "}",
             down = "J",
             up = "K",
-            -- Move current line in Normal mode
+            -- Line
             line_left = "{",
             line_right = "}",
             line_down = "",
