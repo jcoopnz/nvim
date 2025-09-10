@@ -297,6 +297,7 @@ require("lazy").setup({
           }
         })
         require("mini.pairs").setup()
+        require("mini.surround").setup()
       end,
     },
 
@@ -493,10 +494,6 @@ require("lazy").setup({
         fuzzy = { implementation = "prefer_rust" },
       },
     },
-
-    { "tpope/vim-repeat",            event = "VeryLazy" },
-
-    { "tpope/vim-surround",          event = "VeryLazy" },
 
     {
       "akinsho/bufferline.nvim",
