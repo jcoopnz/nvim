@@ -100,13 +100,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- enable Copilot only in certain directories
+-- conditionally enable Copilot
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function()
     local copilot_enabled_dirs = {
-      "Documents/personal/webdev", -- work mac
-      "Documents/dev",             -- personal mac
+      "Documents/personal/webdev", -- work
+      "Documents/dev",             -- personal
       ".config/nvim",              -- both
     }
     local current_dir = vim.fn.expand("%:p:h")
@@ -176,18 +176,11 @@ require("lazy").setup({
         words = { enabled = true },
       },
       keys = {
-        -- Find Files
-        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,     desc = "Smart find files" },
-        { "<LEADER>ff",       function() Snacks.picker.git_files() end, desc = "Git files" },
-        { "<LEADER>.",        function() Snacks.picker.recent() end,    desc = "Find recent files" },
-        {
-          "<LEADER>fc",
-          function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
-          desc = "Config file"
-        },
-
-        -- Search Grep
-        { "<LEADER>/",  function() Snacks.picker.grep() end,            desc = "Search grep" },
+        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,   desc = "Smart find files" },
+        { "<LEADER>/",        function() Snacks.picker.grep() end,    desc = "Search grep" },
+        { "<LEADER>.",        function() Snacks.picker.recent() end,  desc = "Find recent files" },
+        { "<LEADER>,",        function() Snacks.picker.buffers() end, desc = "Search buffers" },
+        { "<LEADER>g",        function() Snacks.lazygit() end,        desc = "Lazygit" },
         {
           "<LEADER>*",
           function() Snacks.picker.grep_word() end,
@@ -195,26 +188,30 @@ require("lazy").setup({
           mode = { "n", "x" }
         },
 
-        -- Find/Search Other
+        -- find
+        { "<LEADER>ff", function() Snacks.picker.git_files() end,       desc = "Git files" },
+        {
+          "<LEADER>fc",
+          function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
+          desc = "Config file"
+        },
+
+        -- search
         { "<LEADER>sr", function() Snacks.picker.resume() end,          desc = "Resume" },
         { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help" },
-
-        -- Git
-        { "<LEADER>g",  function() Snacks.lazygit() end,                desc = "Lazygit" },
+        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "Symbols" },
+        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
 
         -- LSP
         { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
         { "gr",         function() Snacks.picker.lsp_references() end,  desc = "Goto references", nowait = true },
-        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "Symbols" },
         { "<LEADER>uL", function() Snacks.picker.lsp_config() end,      desc = "LSP config" },
 
-        -- Buffers
+        -- buffer
         { "<LEADER>bd", function() Snacks.bufdelete() end,              desc = "Delete" },
         { "<LEADER>bo", function() Snacks.bufdelete.other() end,        desc = "Delete others" },
-        { "<LEADER>,",  function() Snacks.picker.buffers() end,         desc = "Search buffers" },
-        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
 
-        -- Others
+        -- other
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
         { "<LEADER>rf", function() Snacks.rename.rename_file() end,     desc = "Rename file" },
@@ -223,16 +220,16 @@ require("lazy").setup({
         vim.api.nvim_create_autocmd("User", {
           pattern = "VeryLazy",
           callback = function()
-            -- Setup some globals for debugging (lazy-loaded)
+            -- setup debugging globals (lazy-loaded)
             _G.dd = function(...)
               Snacks.debug.inspect(...)
             end
             _G.bt = function()
               Snacks.debug.backtrace()
             end
-            vim.print = _G.dd -- Override print to use snacks for `:=` command
+            vim.print = _G.dd -- override print to use snacks for `:=` cmd
 
-            -- Toggle mappings
+            -- toggles
             Snacks.toggle.option("spell", { name = "Spelling" }):map("<LEADER>us")
             Snacks.toggle.option("wrap", { name = "Wrap" }):map("<LEADER>uw")
             Snacks.toggle.diagnostics():map("<LEADER>ud")
@@ -289,12 +286,12 @@ require("lazy").setup({
         require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
-            -- Visual
+            -- visual
             left = "{",
             right = "}",
             down = "J",
             up = "K",
-            -- Line
+            -- line
             line_left = "{",
             line_right = "}",
             line_down = "",
