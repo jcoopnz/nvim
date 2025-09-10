@@ -281,7 +281,7 @@ require("lazy").setup({
       version = false,
       event = "VeryLazy",
       config = function()
-        require("mini.ai").setup({ n_lines = 200, silect = false })
+        require("mini.ai").setup()
         require("mini.files").setup()
         require("mini.icons").setup()
         require("mini.move").setup({
@@ -302,7 +302,11 @@ require("lazy").setup({
         require("mini.surround").setup()
       end,
       keys = {
-        { "<LEADER>e", function() require("mini.files").open() end, desc = "Explorer" },
+        {
+          "<LEADER>e",
+          function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end,
+          desc = "Explorer"
+        },
       }
     },
 
