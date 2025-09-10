@@ -313,9 +313,6 @@ require("lazy").setup({
             ["cmp.entry.get_documentation"] = true,
           },
         },
-        messages = {
-          view_search = false,
-        },
         presets = {
           bottom_search = true,
           command_palette = true,
@@ -377,9 +374,8 @@ require("lazy").setup({
         current_line_blame = true,
         current_line_blame_opts = {
           virt_text = true,
-          virt_text_pos = "eol",
-          delay = 1000,
-          ignore_whitespace = false,
+          virt_text_pos = "right_align",
+          delay = 800,
         },
         current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
         signs = {
@@ -455,7 +451,6 @@ require("lazy").setup({
                 cond = noice.api.status.command.has,
                 color = { fg = "#ff9e64" },
               },
-              "searchcount",
               "selectioncount",
               "lsp_status"
             },
