@@ -283,10 +283,11 @@ require("lazy").setup({
       config = function()
         require("mini.ai").setup()
         require("mini.files").setup({
-          windows = { width_focus = 80 },
-          mappings = {
-            close = "<LEADER>e",
-          }
+          windows = {
+            width_focus = 80,
+            preview = true,
+          },
+          mappings = { close = "<LEADER>e" }
         })
         require("mini.icons").setup()
         require("mini.move").setup({
