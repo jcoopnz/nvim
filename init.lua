@@ -410,6 +410,9 @@ require("lazy").setup({
         },
         numhl = true,
       },
+      keys = {
+        { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame", silent = true },
+      }
     },
 
     {
