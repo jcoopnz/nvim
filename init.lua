@@ -282,7 +282,9 @@ require("lazy").setup({
       event = "VeryLazy",
       config = function()
         require("mini.ai").setup()
-        require("mini.files").setup()
+        require("mini.files").setup({
+          windows = { width_focus = 80 }
+        })
         require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
