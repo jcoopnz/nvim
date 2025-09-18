@@ -7,7 +7,7 @@ Inspired by [LazyVim](https://www.lazyvim.org) but stripped down to only the thi
 ## To install
 
 ```console
-git clone https://github.com/Jordy1311/nvim.git ~/.config/nvim && nvim
+git clone https://github.com/jcoopnz/nvim.git ~/.config/nvim && nvim
 ```
 
 ## To uninstall
@@ -29,7 +29,7 @@ scrollback-limit = 10485760
 
 font-size = 16
 bold-is-bright = true
-theme = tokyonight_moon
+theme = tokyonight moon
 window-subtitle = working-directory
 window-padding-x = 2
 unfocused-split-opacity = 0.3
