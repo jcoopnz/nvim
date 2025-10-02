@@ -176,11 +176,12 @@ require("lazy").setup({
         words = { enabled = true },
       },
       keys = {
-        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,   desc = "Smart find files" },
-        { "<LEADER>/",        function() Snacks.picker.grep() end,    desc = "Search grep" },
-        { "<LEADER>.",        function() Snacks.picker.recent() end,  desc = "Find recent files" },
-        { "<LEADER>,",        function() Snacks.picker.buffers() end, desc = "Search buffers" },
-        { "<LEADER>g",        function() Snacks.lazygit() end,        desc = "Lazygit" },
+        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,                  desc = "Smart find files" },
+        { "<LEADER>/",        function() Snacks.picker.grep() end,                   desc = "Search grep" },
+        { "<LEADER>.",        function() Snacks.picker.recent() end,                 desc = "Find recent files" },
+        { "<LEADER>,",        function() Snacks.picker.buffers() end,                desc = "Search buffers" },
+        { "<LEADER>g",        function() Snacks.lazygit() end,                       desc = "Lazygit" },
+        { "<LEADER>e",        function() Snacks.explorer({ auto_close = true }) end, desc = "Explorer" },
         {
           "<LEADER>*",
           function() Snacks.picker.grep_word() end,
@@ -282,13 +283,6 @@ require("lazy").setup({
       event = "VeryLazy",
       config = function()
         require("mini.ai").setup()
-        require("mini.files").setup({
-          windows = {
-            width_focus = 80,
-            preview = true,
-          },
-          mappings = { close = "<LEADER>e" }
-        })
         require("mini.icons").setup()
         require("mini.move").setup({
           mappings = {
@@ -307,13 +301,6 @@ require("lazy").setup({
         require("mini.pairs").setup()
         require("mini.surround").setup()
       end,
-      keys = {
-        {
-          "<LEADER>e",
-          function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end,
-          desc = "Explorer"
-        },
-      }
     },
 
     {
