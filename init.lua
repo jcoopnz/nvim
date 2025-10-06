@@ -456,7 +456,6 @@ require("lazy").setup({
                 cond = noice.api.status.command.has,
                 color = { fg = "#ff9e64" },
               },
-              "selectioncount",
               "lsp_status"
             },
             lualine_z = { "location" },
