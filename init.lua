@@ -499,16 +499,18 @@ require("lazy").setup({
       event = "BufReadPre",
       opts = {
         options = {
-          color_icons = true,
-          sort_by = "relative_directory",
+          diagnostics = "nvim_lsp",
+          persist_buffer_sort = true,
+          sort_by = "insert_after_current",
           truncate_names = false,
         },
       },
       keys = {
-        { "L",     ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
-        { "H",     ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
-        { ">", ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
-        { "<", ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
+        { "L",          ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
+        { "H",          ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
+        { ">",          ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
+        { "<",          ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
+        { "<LEADER>bp", ":BufferLineTogglePin<CR>", desc = "Pin buffer",          silent = true },
       },
     },
 
