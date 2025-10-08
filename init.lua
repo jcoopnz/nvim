@@ -426,7 +426,7 @@ require("lazy").setup({
         },
       },
       opts = {
-        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte" },
+        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls" },
       },
     },
 
