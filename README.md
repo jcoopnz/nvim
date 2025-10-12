@@ -24,14 +24,13 @@ rm -rf ~/.cache/nvim
 ```console
 auto-update = check
 shell-integration = detect
-shell-integration-features = title,no-cursor
+shell-integration-features = title,ssh-env,ssh-terminfo,no-cursor
 scrollback-limit = 10485760
 
 font-size = 16
-bold-is-bright = true
 theme = tokyonight moon
 window-subtitle = working-directory
-window-padding-x = 2
+window-padding-x = 8
 unfocused-split-opacity = 0.3
 
 cursor-style = block
