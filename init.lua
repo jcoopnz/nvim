@@ -56,8 +56,8 @@ map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left", silent = true })
 map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right", silent = true })
 map.set("n", "<C-j>", "<C-w><C-j>", { desc = "Focus down", silent = true })
 map.set("n", "<C-k>", "<C-w><C-k>", { desc = "Focus up", silent = true })
-map.set("n", "<LEADER>w", ":write<CR>", { desc = "Write", silent = true })
-map.set("n", "<ESC>", "<CMD>nohlsearch<CR>", { desc = "Clear search", silent = true })
+map.set("n", "<LEADER>w", ":w<CR>", { desc = "Write", silent = true })
+map.set("n", "<ESC>", ":nohlsearch<CR>", { desc = "Clear search", silent = true })
 map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true })
 map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true })
 map.set("n", "n", "nzz", { desc = "Next", silent = true })
@@ -316,7 +316,6 @@ require("lazy").setup({
           },
         },
         presets = {
-          bottom_search = true,
           command_palette = true,
           long_message_to_split = true,
           inc_rename = false,
@@ -550,8 +549,8 @@ require("lazy").setup({
         auto_close = true,
       },
       keys = {
-        { "<LEADER>xx", "<CMD>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Diagnostic list" },
-        { "<LEADER>xt", "<CMD>Trouble todo toggle filter.buf=0<CR>",        desc = "Todo list" },
+        { "<LEADER>xx", ":Trouble diagnostics toggle filter.buf=0<CR>", desc = "Diagnostic list" },
+        { "<LEADER>xt", ":Trouble todo toggle filter.buf=0<CR>",        desc = "Todo list" },
       },
     },
 
@@ -564,6 +563,18 @@ require("lazy").setup({
           { path = "snacks.nvim",        words = { "Snacks" } },
         },
       },
+    },
+
+    {
+      "ThePrimeagen/vim-be-good",
+      cmd = "VimBeGood",
+    },
+
+    {
+      "nvzone/typr",
+      dependencies = "nvzone/volt",
+      opts = {},
+      cmd = { "Typr", "TyprStats" },
     },
   },
 
