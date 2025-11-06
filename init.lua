@@ -212,6 +212,10 @@ require("lazy").setup({
         { "<LEADER>bd", function() Snacks.bufdelete() end,              desc = "Delete" },
         { "<LEADER>bo", function() Snacks.bufdelete.other() end,        desc = "Delete others" },
 
+        -- github
+        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end, desc = "GitHub Pull Requests (open)" },
+        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end, desc = "GitHub Pull Requests (open)" },
+
         -- other
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
