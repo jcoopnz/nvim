@@ -505,6 +505,7 @@ require("lazy").setup({
           persist_buffer_sort = true,
           sort_by = "insert_after_current",
           truncate_names = false,
+          indicator = { style = 'underline' },
         },
       },
       keys = {
