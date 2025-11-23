@@ -470,7 +470,17 @@ require("lazy").setup({
     {
       "rachartier/tiny-inline-diagnostic.nvim",
       event = "VeryLazy",
-      opts = {},
+      opts = {
+        options = {
+          multilines = {
+            enabled = true,
+            severity = {
+              vim.diagnostic.severity.WARN,
+              vim.diagnostic.severity.ERROR,
+            },
+          }
+        }
+      },
     },
 
     {
