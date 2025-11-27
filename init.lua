@@ -377,29 +377,13 @@ require("lazy").setup({
       "lewis6991/gitsigns.nvim",
       event = "VeryLazy",
       opts = {
-        current_line_blame = true,
-        current_line_blame_opts = {
-          virt_text = true,
-          virt_text_pos = "right_align",
-          delay = 800,
-        },
-        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-        signs = {
-          add = { text = "+" },
-          change = { text = "~" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "~/-" },
-          untracked = { text = "▎" },
-        },
-        signs_staged = {
-          add = { text = "+" },
-          change = { text = "~" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "~/-" },
-        },
         numhl = true,
+        current_line_blame = true,
+        current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+        current_line_blame_opts = {
+          virt_text_pos = "right_align",
+          delay = 700,
+        },
       },
       keys = {
         { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame", silent = true },
