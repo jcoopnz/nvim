@@ -580,18 +580,6 @@ require("lazy").setup({
         },
       },
     },
-
-    {
-      "ThePrimeagen/vim-be-good",
-      cmd = "VimBeGood",
-    },
-
-    {
-      "nvzone/typr",
-      dependencies = "nvzone/volt",
-      opts = {},
-      cmd = { "Typr", "TyprStats" },
-    },
   },
 
   checker = { enabled = true },
