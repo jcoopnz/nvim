@@ -213,8 +213,8 @@ require("lazy").setup({
         { "<LEADER>bo", function() Snacks.bufdelete.other() end,        desc = "Delete others" },
 
         -- github
-        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end, desc = "GitHub Pull Requests (open)" },
-        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end, desc = "GitHub Pull Requests (open)" },
+        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end, desc = "My PRs" },
+        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end, desc = "All open PRs" },
 
         -- other
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
@@ -352,6 +352,7 @@ require("lazy").setup({
             { "<LEADER>f", group = "Find" },
             { "<LEADER>n", group = "Notification" },
             { "<LEADER>r", group = "Rename" },
+            { "<LEADER>p", group = "GitHub PR" },
             { "<LEADER>s", group = "Search" },
             { "<LEADER>u", group = "User settings" },
             { "<LEADER>x", group = "Diagnostics" },
