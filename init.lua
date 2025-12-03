@@ -425,6 +425,7 @@ require("lazy").setup({
         local noice = require("noice")
         return {
           options = {
+            theme = 'tokyonight',
             globalstatus = true,
             disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
           },
