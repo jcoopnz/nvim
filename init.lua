@@ -91,6 +91,14 @@ vim.schedule(function()
   option.clipboard = "unnamedplus"
 end)
 
+-- Enable Treesitter highlighting
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
 -- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked text",
