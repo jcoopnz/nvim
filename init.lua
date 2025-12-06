@@ -60,10 +60,6 @@ map.set("n", "<LEADER>w", ":w<CR>", { desc = "Write", silent = true })
 map.set("n", "<ESC>", ":nohlsearch<CR>", { desc = "Clear search", silent = true })
 map.set("n", "<LEADER>ul", ":Lazy<CR>", { desc = "Lazy", silent = true })
 map.set("n", "<LEADER>um", ":Mason<CR>", { desc = "Mason", silent = true })
-map.set("n", "n", "nzz", { desc = "Next", silent = true })
-map.set("n", "N", "Nzz", { desc = "Previous", silent = true })
-map.set("n", "<C-d>", "<C-d>zz", { desc = "Previous", silent = true })
-map.set("n", "<C-u>", "<C-u>zz", { desc = "Previous", silent = true })
 map.set("n", "Q", "q", { noremap = true, silent = true })
 map.set("n", "q", "<Nop>", { noremap = true, silent = true })
 map.set("n", "<LEADER>|", ":vs<CR>", { desc = "Split", silent = true })
@@ -167,20 +163,34 @@ require("lazy").setup({
             { section = "startup" },
           },
         },
+        indent = { enabled = true },
+        input = { enabled = true },
+        notifier = { enabled = true },
+        notify = { enabled = true },
         picker = {
           enabled = true,
+          formatters = {
+            file = {
+              filename_first = true,
+              truncate = "center",
+            }
+          },
           layout = {
             cycle = false,
             preset = function()
               return vim.o.columns >= 160 and "default" or "vertical"
             end,
           },
+          win = {
+            input = {
+              keys = {
+                 ["<Down>"] = { "history_forward", mode = { "i", "n" } },
+                 ["<Up>"] = { "history_back", mode = { "i", "n" } },
+              }
+            }
+          }
         },
-        image = { enabled = true },
-        indent = { enabled = true },
-        input = { enabled = true },
-        notifier = { enabled = true },
-        notify = { enabled = true },
+        scroll = { enabled = true },
         words = { enabled = true },
       },
       keys = {
@@ -199,13 +209,6 @@ require("lazy").setup({
 
         -- find
         { "<LEADER>ff", function() Snacks.picker.git_files() end,       desc = "Git files" },
-        {
-          "<LEADER>fc",
-          function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
-          desc = "Config file"
-        },
-
-        -- search
         { "<LEADER>sr", function() Snacks.picker.resume() end,          desc = "Resume" },
         { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "Symbols" },
@@ -233,20 +236,28 @@ require("lazy").setup({
         vim.api.nvim_create_autocmd("User", {
           pattern = "VeryLazy",
           callback = function()
-            -- setup debugging globals (lazy-loaded)
+            -- Setup some globals for debugging (lazy-loaded)
             _G.dd = function(...)
               Snacks.debug.inspect(...)
             end
             _G.bt = function()
               Snacks.debug.backtrace()
             end
-            vim.print = _G.dd -- override print to use snacks for `:=` cmd
-
+            -- Override print to use snacks for `:=` command
+            if vim.fn.has("nvim-0.11") == 1 then
+              ---@diagnostic disable-next-line
+              vim._print = function(_, ...)
+                dd(...)
+              end
+            else
+              vim.print = _G.dd
+            end
             -- toggles
             Snacks.toggle.option("spell", { name = "Spelling" }):map("<LEADER>us")
             Snacks.toggle.option("wrap", { name = "Wrap" }):map("<LEADER>uw")
             Snacks.toggle.diagnostics():map("<LEADER>ud")
             Snacks.toggle.inlay_hints():map("<LEADER>uh")
+            Snacks.toggle.dim():map("<leader>uD")
           end,
         })
       end,
