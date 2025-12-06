@@ -225,7 +225,7 @@ require("lazy").setup({
 
         -- github
         { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end, desc = "My PRs" },
-        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end, desc = "All open PRs" },
+        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end,         desc = "All open PRs" },
 
         -- other
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
