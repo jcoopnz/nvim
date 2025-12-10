@@ -174,10 +174,7 @@ require("lazy").setup({
         picker = {
           enabled = true,
           formatters = {
-            file = {
-              filename_first = true,
-              truncate = "center",
-            }
+            file = { truncate = "center" },
           },
           layout = {
             cycle = false,
@@ -185,13 +182,16 @@ require("lazy").setup({
               return vim.o.columns >= 160 and "default" or "vertical"
             end,
           },
+          sources = {
+            explorer = { auto_close = true },
+          },
           win = {
             input = {
               keys = {
-                 ["<Down>"] = { "history_forward", mode = { "i", "n" } },
-                 ["<Up>"] = { "history_back", mode = { "i", "n" } },
-              }
-            }
+                ["<Down>"] = { "history_forward", mode = { "i", "n" } },
+                ["<Up>"] = { "history_back", mode = { "i", "n" } },
+              },
+            },
           }
         },
         words = { enabled = true },
@@ -202,7 +202,7 @@ require("lazy").setup({
         { "<LEADER>.",        function() Snacks.picker.recent() end,                 desc = "Find recent files" },
         { "<LEADER>,",        function() Snacks.picker.buffers() end,                desc = "Search buffers" },
         { "<LEADER>g",        function() Snacks.lazygit() end,                       desc = "Lazygit" },
-        { "<LEADER>e",        function() Snacks.explorer({ auto_close = true }) end, desc = "Explorer" },
+        { "<LEADER>e",        function() Snacks.explorer() end, desc = "Explorer" },
         {
           "<LEADER>*",
           function() Snacks.picker.grep_word() end,
