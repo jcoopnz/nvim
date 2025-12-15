@@ -576,6 +576,11 @@ require("lazy").setup({
         },
       },
     },
+
+    {
+      "ThePrimeagen/vim-be-good",
+      cmd = "VimBeGood",
+    }
   },
 
   checker = { enabled = true },
