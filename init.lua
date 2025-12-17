@@ -392,7 +392,8 @@ require("lazy").setup({
         map.set("i", "<C-p>", "<Plug>(copilot-suggest)", { desc = "Make suggestion" })
         map.set("i", "<C-j>", "<Plug>(copilot-next)", { desc = "Next suggestion" })
         map.set("i", "<C-k>", "<Plug>(copilot-previous)", { desc = "Previous suggestion" })
-        map.set("i", "<C-l>", "<Plug>(copilot-accept-line)", { desc = "Accept line" })
+        map.set("i", "<C-l>", "<Plug>(copilot-accept-word)", { desc = "Accept word" })
+        map.set("i", "<C-;>", "<Plug>(copilot-accept-line)", { desc = "Accept line" })
         map.set("i", "<C-h>", "<Plug>(copilot-dismiss)", { desc = "Dismiss suggestion" })
       end,
     },
