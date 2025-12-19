@@ -172,7 +172,10 @@ require("lazy").setup({
         picker = {
           enabled = true,
           formatters = {
-            file = { truncate = "center" },
+            file = {
+              filename_first = true,
+              truncate = "center"
+            },
           },
           layout = {
             cycle = false,
