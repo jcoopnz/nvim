@@ -30,7 +30,7 @@ option.smartcase = true
 option.splitright = true
 option.confirm = true
 option.smartindent = true
-option.updatetime = 50
+option.updatetime = 250
 option.timeoutlen = 1000
 
 -- visual
@@ -503,13 +503,16 @@ require("lazy").setup({
       opts = {
         keymap = { preset = "default" },
         fuzzy = { implementation = "prefer_rust" },
+        sources = {
+          default = { 'lsp', 'path', 'snippets', 'buffer' },
+        },
       },
     },
 
     {
       "akinsho/bufferline.nvim",
       version = "*",
-      event = "BufReadPre",
+      event = "VeryLazy",
       opts = {
         options = {
           diagnostics = "nvim_lsp",
@@ -530,7 +533,7 @@ require("lazy").setup({
 
     {
       "folke/persistence.nvim",
-      event = "BufReadPre",
+      event = "VeryLazy",
       opts = {},
     },
 
