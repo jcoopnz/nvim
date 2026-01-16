@@ -213,7 +213,7 @@ require("lazy").setup({
 
         -- find
         { "<LEADER>ff", function() Snacks.picker.git_files() end,       desc = "Git files" },
-        { "<LEADER>sr", function() Snacks.picker.resume() end,          desc = "Resume" },
+        { "<LEADER>sr", function() Snacks.picker.resume({ exclude = { "explorer" } }) end, desc = "Resume" },
         { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "Symbols" },
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
