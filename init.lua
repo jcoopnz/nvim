@@ -415,6 +415,8 @@ require("lazy").setup({
       },
       keys = {
         { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame", silent = true },
+        { "]h", ":Gitsigns next_hunk<CR>", desc = "Next hunk", silent = true },
+        { "[h", ":Gitsigns prev_hunk<CR>", desc = "Previous hunk", silent = true },
       }
     },
 
