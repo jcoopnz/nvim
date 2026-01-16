@@ -210,27 +210,22 @@ require("lazy").setup({
           desc = "Grep cursor word/selection",
           mode = { "n", "x" }
         },
-
         -- find
         { "<LEADER>ff", function() Snacks.picker.git_files() end,                          desc = "Git files" },
         { "<LEADER>sr", function() Snacks.picker.resume({ exclude = { "explorer" } }) end, desc = "Resume" },
         { "<LEADER>sh", function() Snacks.picker.help() end,                               desc = "Help" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                        desc = "Symbols" },
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,                       desc = "Open buffers" },
-
         -- LSP
         { "gd",         function() Snacks.picker.lsp_definitions() end,                    desc = "Goto definition" },
         { "gr",         function() Snacks.picker.lsp_references() end,                     desc = "Goto references", nowait = true },
         { "<LEADER>uL", function() Snacks.picker.lsp_config() end,                         desc = "LSP config" },
-
         -- buffer
         { "<LEADER>bd", function() Snacks.bufdelete() end,                                 desc = "Delete" },
         { "<LEADER>bo", function() Snacks.bufdelete.other() end,                           desc = "Delete others" },
-
         -- github
         { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end,    desc = "My PRs" },
         { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end,            desc = "All open PRs" },
-
         -- other
         { "<LEADER>nh", function() Snacks.notifier.show_history() end,                     desc = "History" },
         { "<LEADER>nd", function() Snacks.notifier.hide() end,                             desc = "Dismiss all" },
@@ -304,9 +299,7 @@ require("lazy").setup({
       'andymass/vim-matchup',
       event = "VeryLazy",
       opts = {
-        treesitter = {
-          stopline = 500,
-        }
+        treesitter = { stopline = 500 }
       }
     },
 
