@@ -198,12 +198,12 @@ require("lazy").setup({
         words = { enabled = true },
       },
       keys = {
-        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,                  desc = "Smart find files" },
-        { "<LEADER>/",        function() Snacks.picker.grep() end,                   desc = "Search grep" },
-        { "<LEADER>.",        function() Snacks.picker.recent() end,                 desc = "Find recent files" },
-        { "<LEADER>,",        function() Snacks.picker.buffers() end,                desc = "Search buffers" },
-        { "<LEADER>g",        function() Snacks.lazygit() end,                       desc = "Lazygit" },
-        { "<LEADER>e",        function() Snacks.explorer() end, desc = "Explorer" },
+        { "<LEADER><LEADER>", function() Snacks.picker.smart() end,   desc = "Smart find files" },
+        { "<LEADER>/",        function() Snacks.picker.grep() end,    desc = "Search grep" },
+        { "<LEADER>.",        function() Snacks.picker.recent() end,  desc = "Find recent files" },
+        { "<LEADER>,",        function() Snacks.picker.buffers() end, desc = "Search buffers" },
+        { "<LEADER>g",        function() Snacks.lazygit() end,        desc = "Lazygit" },
+        { "<LEADER>e",        function() Snacks.explorer() end,       desc = "Explorer" },
         {
           "<LEADER>*",
           function() Snacks.picker.grep_word() end,
@@ -212,29 +212,29 @@ require("lazy").setup({
         },
 
         -- find
-        { "<LEADER>ff", function() Snacks.picker.git_files() end,       desc = "Git files" },
+        { "<LEADER>ff", function() Snacks.picker.git_files() end,                          desc = "Git files" },
         { "<LEADER>sr", function() Snacks.picker.resume({ exclude = { "explorer" } }) end, desc = "Resume" },
-        { "<LEADER>sh", function() Snacks.picker.help() end,            desc = "Help" },
-        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,     desc = "Symbols" },
-        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,    desc = "Open buffers" },
+        { "<LEADER>sh", function() Snacks.picker.help() end,                               desc = "Help" },
+        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                        desc = "Symbols" },
+        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,                       desc = "Open buffers" },
 
         -- LSP
-        { "gd",         function() Snacks.picker.lsp_definitions() end, desc = "Goto definition" },
-        { "gr",         function() Snacks.picker.lsp_references() end,  desc = "Goto references", nowait = true },
-        { "<LEADER>uL", function() Snacks.picker.lsp_config() end,      desc = "LSP config" },
+        { "gd",         function() Snacks.picker.lsp_definitions() end,                    desc = "Goto definition" },
+        { "gr",         function() Snacks.picker.lsp_references() end,                     desc = "Goto references", nowait = true },
+        { "<LEADER>uL", function() Snacks.picker.lsp_config() end,                         desc = "LSP config" },
 
         -- buffer
-        { "<LEADER>bd", function() Snacks.bufdelete() end,              desc = "Delete" },
-        { "<LEADER>bo", function() Snacks.bufdelete.other() end,        desc = "Delete others" },
+        { "<LEADER>bd", function() Snacks.bufdelete() end,                                 desc = "Delete" },
+        { "<LEADER>bo", function() Snacks.bufdelete.other() end,                           desc = "Delete others" },
 
         -- github
-        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end, desc = "My PRs" },
-        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end,         desc = "All open PRs" },
+        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end,    desc = "My PRs" },
+        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end,            desc = "All open PRs" },
 
         -- other
-        { "<LEADER>nh", function() Snacks.notifier.show_history() end,  desc = "History" },
-        { "<LEADER>nd", function() Snacks.notifier.hide() end,          desc = "Dismiss all" },
-        { "<LEADER>rf", function() Snacks.rename.rename_file() end,     desc = "Rename file" },
+        { "<LEADER>nh", function() Snacks.notifier.show_history() end,                     desc = "History" },
+        { "<LEADER>nd", function() Snacks.notifier.hide() end,                             desc = "Dismiss all" },
+        { "<LEADER>rf", function() Snacks.rename.rename_file() end,                        desc = "Rename file" },
       },
       init = function()
         vim.api.nvim_create_autocmd("User", {
