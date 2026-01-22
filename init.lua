@@ -362,39 +362,34 @@ require("lazy").setup({
       event = "VeryLazy",
       opts = {
         nes = {
-          enabled = true,          -- Enable automatic NES
-          debounce = 100,          -- Wait 100ms after typing before requesting suggestions
+          enabled = true,
+          debounce = 100,
         },
         cli = {
-          watch = true,            -- Auto-reload files modified by AI tools
+          watch = true,
           mux = {
-            enabled = false,       -- Set to true to persist sessions with tmux/zellij
-            backend = "tmux",      -- "tmux" or "zellij"
+            enabled = false,
+            backend = "tmux",
           },
         },
       },
       keys = {
-        -- Navigate and apply Next Edit Suggestions
-        -- If there's a next edit, jump to it; otherwise apply the current one
         {
           "<Tab>",
           function()
             if not require("sidekick").nes_jump_or_apply() then
-              return "<Tab>" -- Fallback to normal tab behavior
+              return "<Tab>"
             end
           end,
           expr = true,
           desc = "Jump to or apply next edit suggestion",
         },
-        -- AI CLI Terminal controls
-        { "<LEADER>aa", function() require("sidekick.cli").toggle() end,       desc = "Toggle AI CLI" },
-        { "<LEADER>as", function() require("sidekick.cli").select() end,       desc = "Select AI tool" },
-        { "<LEADER>ad", function() require("sidekick.cli").close() end,        desc = "Close AI session" },
-        -- Send context to AI
+        { "<LEADER>aa", function() require("sidekick.cli").toggle({ name = "copilot" }) end,  desc = "Toggle AI CLI" },
+        { "<LEADER>as", function() require("sidekick.cli").select() end,                      desc = "Select AI tool" },
+        { "<LEADER>ad", function() require("sidekick.cli").close() end,                       desc = "Close AI session" },
         { "<LEADER>af", function() require("sidekick.cli").send({ msg = "{file}" }) end,      desc = "Send file to AI",      mode = "n" },
         { "<LEADER>av", function() require("sidekick.cli").send({ msg = "{selection}" }) end, desc = "Send selection to AI", mode = "x" },
-        -- Prompt library
-        { "<LEADER>ap", function() require("sidekick.cli").prompt() end,       desc = "Select AI prompt",     mode = { "n", "x" } },
+        { "<LEADER>ap", function() require("sidekick.cli").prompt() end,                      desc = "Select AI prompt",     mode = { "n", "x" } },
       },
     },
 
@@ -483,7 +478,7 @@ require("lazy").setup({
         },
       },
       opts = {
-        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls" },
+        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls", "copilot" },
       },
     },
 
