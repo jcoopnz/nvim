@@ -273,6 +273,28 @@ require("lazy").setup({
     },
 
     {
+      "akinsho/bufferline.nvim",
+      version = "*",
+      event = "VeryLazy",
+      opts = {
+        options = {
+          diagnostics = "nvim_lsp",
+          persist_buffer_sort = true,
+          sort_by = "insert_after_current",
+          truncate_names = false,
+          indicator = { style = 'underline' },
+        },
+      },
+      keys = {
+        { "L",          ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
+        { "H",          ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
+        { ">",          ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
+        { "<",          ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
+        { "<LEADER>bp", ":BufferLineTogglePin<CR>", desc = "Pin buffer",          silent = true },
+      },
+    },
+
+    {
       'andymass/vim-matchup',
       event = "VeryLazy",
       opts = {
@@ -327,6 +349,12 @@ require("lazy").setup({
           filter = { event = "msg_showmode" },
         } },
       },
+    },
+
+    {
+      "folke/persistence.nvim",
+      event = "VeryLazy",
+      opts = {},
     },
 
     {
@@ -482,31 +510,16 @@ require("lazy").setup({
     },
 
     {
-      "akinsho/bufferline.nvim",
-      version = "*",
-      event = "VeryLazy",
+      "folke/trouble.nvim",
+      cmd = "Trouble",
       opts = {
-        options = {
-          diagnostics = "nvim_lsp",
-          persist_buffer_sort = true,
-          sort_by = "insert_after_current",
-          truncate_names = false,
-          indicator = { style = 'underline' },
-        },
+        focus = true,
+        auto_close = true,
       },
       keys = {
-        { "L",          ":BufferLineCycleNext<CR>", desc = "Next buffer",         silent = true },
-        { "H",          ":BufferLineCyclePrev<CR>", desc = "Previous buffer",     silent = true },
-        { ">",          ":BufferLineMoveNext<CR>",  desc = "Move buffer forward", silent = true },
-        { "<",          ":BufferLineMovePrev<CR>",  desc = "Move buffer back",    silent = true },
-        { "<LEADER>bp", ":BufferLineTogglePin<CR>", desc = "Pin buffer",          silent = true },
+        { "<LEADER>xx", ":Trouble diagnostics toggle filter.buf=0<CR>", desc = "Diagnostic list" },
+        { "<LEADER>xt", ":Trouble todo toggle filter.buf=0<CR>",        desc = "Todo list" },
       },
-    },
-
-    {
-      "folke/persistence.nvim",
-      event = "VeryLazy",
-      opts = {},
     },
 
     {
@@ -533,16 +546,8 @@ require("lazy").setup({
     },
 
     {
-      "folke/trouble.nvim",
-      cmd = "Trouble",
-      opts = {
-        focus = true,
-        auto_close = true,
-      },
-      keys = {
-        { "<LEADER>xx", ":Trouble diagnostics toggle filter.buf=0<CR>", desc = "Diagnostic list" },
-        { "<LEADER>xt", ":Trouble todo toggle filter.buf=0<CR>",        desc = "Todo list" },
-      },
+      "ThePrimeagen/vim-be-good",
+      cmd = "VimBeGood",
     },
 
     {
@@ -555,11 +560,6 @@ require("lazy").setup({
         },
       },
     },
-
-    {
-      "ThePrimeagen/vim-be-good",
-      cmd = "VimBeGood",
-    }
   },
 
   checker = { enabled = true },
