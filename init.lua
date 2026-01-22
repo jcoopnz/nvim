@@ -106,29 +106,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- conditionally enable Copilot
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = function()
-    local copilot_enabled_dirs = {
-      "Documents/personal/webdev", -- work
-      "Documents/dev",             -- personal
-      ".config/nvim",              -- both
-    }
-    local current_dir = vim.fn.expand("%:p:h")
-    local copilot_enabled = false
-
-    for _, dir in ipairs(copilot_enabled_dirs) do
-      if string.find(current_dir, dir) then
-        copilot_enabled = true
-        break
-      end
-    end
-
-    vim.g.copilot_filetypes = { ["*"] = copilot_enabled }
-  end,
-})
-
 require("lazy").setup({
   spec = {
     {
