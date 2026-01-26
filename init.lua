@@ -188,7 +188,7 @@ require("lazy").setup({
           mode = { "n", "x" }
         },
         -- find
-        { "<LEADER>ff", function() Snacks.picker.git_files() end,                          desc = "Git files" },
+        { "<LEADER>sf", function() Snacks.picker.git_files() end,                          desc = "Git files" },
         { "<LEADER>sr", function() Snacks.picker.resume({ exclude = { "explorer" } }) end, desc = "Resume" },
         { "<LEADER>sh", function() Snacks.picker.help() end,                               desc = "Help" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                        desc = "Symbols" },
@@ -425,7 +425,6 @@ require("lazy").setup({
           {
             mode = { "n", "v" },
             { "<LEADER>b", group = "Buffer" },
-            { "<LEADER>f", group = "Find" },
             { "<LEADER>n", group = "Notification" },
             { "<LEADER>r", group = "Rename" },
             { "<LEADER>p", group = "GitHub PR" },
