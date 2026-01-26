@@ -384,12 +384,27 @@ require("lazy").setup({
           expr = true,
           desc = "Jump to or apply next edit suggestion",
         },
-        { "<LEADER>aa", function() require("sidekick.cli").toggle({ name = "copilot" }) end,  desc = "Toggle AI CLI" },
-        { "<LEADER>as", function() require("sidekick.cli").select() end,                      desc = "Select AI tool" },
-        { "<LEADER>ad", function() require("sidekick.cli").close() end,                       desc = "Close AI session" },
-        { "<LEADER>af", function() require("sidekick.cli").send({ msg = "{file}" }) end,      desc = "Send file to AI",      mode = "n" },
-        { "<LEADER>av", function() require("sidekick.cli").send({ msg = "{selection}" }) end, desc = "Send selection to AI", mode = "x" },
-        { "<LEADER>ap", function() require("sidekick.cli").prompt() end,                      desc = "Select AI prompt",     mode = { "n", "x" } },
+        { "<LEADER>aa", function() require("sidekick.cli").toggle({ name = "copilot" }) end, desc = "Toggle AI CLI" },
+        { "<LEADER>as", function() require("sidekick.cli").select() end,                     desc = "Select AI tool" },
+        { "<LEADER>ad", function() require("sidekick.cli").close() end,                      desc = "Close AI session" },
+        {
+          "<LEADER>af",
+          function() require("sidekick.cli").send({ msg = "{file}" }) end,
+          desc = "Send file to AI",
+          mode = "n"
+        },
+        {
+          "<LEADER>av",
+          function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+          desc = "Send selection to AI",
+          mode = "x"
+        },
+        {
+          "<LEADER>ap",
+          function() require("sidekick.cli").prompt() end,
+          desc = "Select AI prompt",
+          mode = { "n", "x" }
+        },
       },
     },
 
