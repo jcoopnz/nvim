@@ -50,7 +50,7 @@ option.tabstop = 2
 option.softtabstop = 2
 option.shiftwidth = 2
 option.expandtab = true
-option.scrolloff = 8
+option.scrolloff = 10
 
 map.set("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left", silent = true })
 map.set("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right", silent = true })
