@@ -183,9 +183,11 @@ require("lazy").setup({
         { "<LEADER>e",        function() Snacks.explorer() end,       desc = "Explorer" },
         {
           "<LEADER>sr",
-          function() Snacks.picker.resume({
-            exclude = { "explorer", "lsp_definitions", "lsp_references", "gh_pr" }
-          }) end,
+          function()
+            Snacks.picker.resume({
+              exclude = { "explorer", "lsp_definitions", "lsp_references", "gh_pr" }
+            })
+          end,
           desc = "Resume"
         },
         {
@@ -195,24 +197,24 @@ require("lazy").setup({
           mode = { "n", "x" }
         },
         -- find
-        { "<LEADER>sf", function() Snacks.picker.git_files() end,                          desc = "Git files" },
-        { "<LEADER>sh", function() Snacks.picker.help() end,                               desc = "Help" },
-        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                        desc = "Symbols" },
-        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,                       desc = "Open buffers" },
+        { "<LEADER>sf", function() Snacks.picker.git_files() end,                       desc = "Git files" },
+        { "<LEADER>sh", function() Snacks.picker.help() end,                            desc = "Help" },
+        { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                     desc = "Symbols" },
+        { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,                    desc = "Open buffers" },
         -- LSP
-        { "gd",         function() Snacks.picker.lsp_definitions() end,                    desc = "Goto definition" },
-        { "gr",         function() Snacks.picker.lsp_references() end,                     desc = "Goto references", nowait = true },
-        { "<LEADER>uL", function() Snacks.picker.lsp_config() end,                         desc = "LSP config" },
+        { "gd",         function() Snacks.picker.lsp_definitions() end,                 desc = "Goto definition" },
+        { "gr",         function() Snacks.picker.lsp_references() end,                  desc = "Goto references", nowait = true },
+        { "<LEADER>uL", function() Snacks.picker.lsp_config() end,                      desc = "LSP config" },
         -- buffer
-        { "<LEADER>bd", function() Snacks.bufdelete() end,                                 desc = "Delete" },
-        { "<LEADER>bo", function() Snacks.bufdelete.other() end,                           desc = "Delete others" },
+        { "<LEADER>bd", function() Snacks.bufdelete() end,                              desc = "Delete" },
+        { "<LEADER>bo", function() Snacks.bufdelete.other() end,                        desc = "Delete others" },
         -- github
-        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end,    desc = "My PRs" },
-        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end,            desc = "All open PRs" },
+        { "<leader>pr", function() Snacks.picker.gh_pr({ author = 'iqfy-jordan' }) end, desc = "My PRs" },
+        { "<leader>pR", function() Snacks.picker.gh_pr({ state = 'open' }) end,         desc = "All open PRs" },
         -- other
-        { "<LEADER>nh", function() Snacks.notifier.show_history() end,                     desc = "History" },
-        { "<LEADER>nd", function() Snacks.notifier.hide() end,                             desc = "Dismiss all" },
-        { "<LEADER>rf", function() Snacks.rename.rename_file() end,                        desc = "Rename file" },
+        { "<LEADER>nh", function() Snacks.notifier.show_history() end,                  desc = "History" },
+        { "<LEADER>nd", function() Snacks.notifier.hide() end,                          desc = "Dismiss all" },
+        { "<LEADER>rf", function() Snacks.rename.rename_file() end,                     desc = "Rename file" },
       },
       init = function()
         vim.api.nvim_create_autocmd("User", {
@@ -453,9 +455,9 @@ require("lazy").setup({
         },
       },
       keys = {
-        { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame", silent = true },
-        { "]h", ":Gitsigns next_hunk<CR>", desc = "Next hunk", silent = true },
-        { "[h", ":Gitsigns prev_hunk<CR>", desc = "Previous hunk", silent = true },
+        { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame",  silent = true },
+        { "]h",         ":Gitsigns next_hunk<CR>",                 desc = "Next hunk",     silent = true },
+        { "[h",         ":Gitsigns prev_hunk<CR>",                 desc = "Previous hunk", silent = true },
       }
     },
 
