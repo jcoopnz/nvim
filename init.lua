@@ -391,8 +391,6 @@ require("lazy").setup({
           desc = "Jump to or apply next edit suggestion",
         },
         { "<LEADER>aa", function() require("sidekick.cli").toggle({ name = "copilot" }) end, desc = "Toggle AI CLI" },
-        { "<LEADER>as", function() require("sidekick.cli").select() end,                     desc = "Select AI tool" },
-        { "<LEADER>ad", function() require("sidekick.cli").close() end,                      desc = "Close AI session" },
         {
           "<LEADER>af",
           function() require("sidekick.cli").send({ msg = "{file}" }) end,
