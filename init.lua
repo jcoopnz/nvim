@@ -160,9 +160,6 @@ require("lazy").setup({
               return vim.o.columns >= 160 and "default" or "vertical"
             end,
           },
-          sources = {
-            explorer = { auto_close = true },
-          },
           win = {
             input = {
               keys = {
