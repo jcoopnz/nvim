@@ -365,17 +365,7 @@ require("lazy").setup({
       "folke/sidekick.nvim",
       event = "VeryLazy",
       opts = {
-        nes = {
-          enabled = true,
-          debounce = 100,
-        },
-        cli = {
-          watch = true,
-          mux = {
-            enabled = false,
-            backend = "tmux",
-          },
-        },
+        nes = { enabled = true },
       },
       keys = {
         {
