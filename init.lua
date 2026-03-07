@@ -205,6 +205,7 @@ require("lazy").setup({
         { "<LEADER>sh", function() Snacks.picker.help() end,                            desc = "Help" },
         { "<LEADER>ss", function() Snacks.picker.lsp_symbols() end,                     desc = "Symbols" },
         { "<LEADER>sb", function() Snacks.picker.grep_buffers() end,                    desc = "Open buffers" },
+        { "<leader>sd", function() Snacks.picker.git_diff() end,                        desc = "Git Diff (Hunks)" },
         -- LSP
         { "gd",         function() Snacks.picker.lsp_definitions() end,                 desc = "Goto definition" },
         { "gr",         function() Snacks.picker.lsp_references() end,                  desc = "Goto references", nowait = true },
