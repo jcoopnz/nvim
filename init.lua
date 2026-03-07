@@ -453,6 +453,7 @@ require("lazy").setup({
         { "<LEADER>ub", ":Gitsigns toggle_current_line_blame<CR>", desc = "Toggle blame",  silent = true },
         { "]h",         ":Gitsigns next_hunk<CR>",                 desc = "Next hunk",     silent = true },
         { "[h",         ":Gitsigns prev_hunk<CR>",                 desc = "Previous hunk", silent = true },
+        { "<LEADER>hr", ":Gitsigns reset_hunk<CR>",                desc = "Reset hunk",    silent = true },
       }
     },
 
