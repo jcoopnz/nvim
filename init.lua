@@ -371,45 +371,6 @@ require("lazy").setup({
     },
 
     {
-      "folke/sidekick.nvim",
-      event = "VeryLazy",
-      opts = {
-        nes = { enabled = true },
-      },
-      keys = {
-        {
-          "<Tab>",
-          function()
-            if not require("sidekick").nes_jump_or_apply() then
-              return "<Tab>"
-            end
-          end,
-          expr = true,
-          desc = "Jump to or apply next edit suggestion",
-        },
-        { "<LEADER>aa", function() require("sidekick.cli").toggle({ name = "copilot" }) end, desc = "Toggle AI CLI" },
-        {
-          "<LEADER>af",
-          function() require("sidekick.cli").send({ msg = "{file}" }) end,
-          desc = "Send file to AI",
-          mode = "n"
-        },
-        {
-          "<LEADER>av",
-          function() require("sidekick.cli").send({ msg = "{selection}" }) end,
-          desc = "Send selection to AI",
-          mode = "x"
-        },
-        {
-          "<LEADER>ap",
-          function() require("sidekick.cli").prompt() end,
-          desc = "Select AI prompt",
-          mode = { "n", "x" }
-        },
-      },
-    },
-
-    {
       "folke/todo-comments.nvim",
       event = "VeryLazy",
       dependencies = { "nvim-lua/plenary.nvim" },
