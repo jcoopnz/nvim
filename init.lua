@@ -167,7 +167,14 @@ require("lazy").setup({
                 ["<Up>"] = { "history_back", mode = { "i", "n" } },
               },
             },
-          }
+          },
+          sources = {
+            explorer = {
+              layout = {
+                layout = { min_width = 60 }
+              },
+            },
+          },
         },
         words = { enabled = true },
       },
