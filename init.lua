@@ -171,7 +171,7 @@ require("lazy").setup({
           sources = {
             explorer = {
               layout = {
-                layout = { min_width = 60 }
+                layout = { width = 60 }
               },
             },
           },
