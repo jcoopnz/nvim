@@ -285,6 +285,27 @@ require("lazy").setup({
     },
 
     {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      opts = {
+        panel = { enabled = false },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<Tab>",
+            accept_word = "<M-w>",
+            accept_line = "<M-l>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+      },
+    },
+
+    {
       "akinsho/bufferline.nvim",
       version = "*",
       event = "VeryLazy",
@@ -442,7 +463,7 @@ require("lazy").setup({
         },
       },
       opts = {
-        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls", "copilot" },
+        ensure_installed = { "ast_grep", "lua_ls", "ts_ls", "svelte", "angularls" },
       },
     },
 
