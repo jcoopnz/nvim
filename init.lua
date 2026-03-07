@@ -290,6 +290,7 @@ require("lazy").setup({
       event = "VeryLazy",
       opts = {
         options = {
+          always_show_bufferline = false,
           diagnostics = "nvim_lsp",
           persist_buffer_sort = true,
           sort_by = "insert_after_current",
