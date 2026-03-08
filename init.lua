@@ -106,6 +106,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- hide copilot when blink has a suggestion
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuOpen',
+  callback = function()
+    pcall(vim.fn['copilot#Clear'])
+    vim.b.copilot_enabled = false
+  end,
+})
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'BlinkCmpMenuClose',
+  callback = function()
+    vim.b.copilot_enabled = true
+  end,
+})
+
 require("lazy").setup({
   spec = {
     {
@@ -282,6 +297,11 @@ require("lazy").setup({
           "yaml"
         })
       end,
+    },
+
+    {
+      "github/copilot.vim",
+      event = "InsertEnter",
     },
 
     {
