@@ -285,27 +285,6 @@ require("lazy").setup({
     },
 
     {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-      opts = {
-        panel = { enabled = false },
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<Tab>",
-            accept_word = "<M-w>",
-            accept_line = "<M-l>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-      },
-    },
-
-    {
       "mfussenegger/nvim-lint",
       event = { "BufReadPost", "BufWritePost", "BufNewFile" },
       config = function()
